@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import NavBar from "../components/NavBar";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -15,7 +16,8 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
     return (
         <html lang="en">
             <body className={`${geistSans.variable} ${geistMono.variable} bg-gray-100`}>
-                {children}
+                <NavBar />
+                <main className="pt-16">{children}</main>
             </body>
         </html>
     );
