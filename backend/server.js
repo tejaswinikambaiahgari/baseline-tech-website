@@ -30,8 +30,7 @@ app.post("/api/waitlist", async (req, res) => {
     .select("id")
     .eq("email", email)
     .maybeSingle();
-    .eq('email', email)
-    .maybeSingle();
+
 
     if (queryError && queryError.code == 'PGRST116') {
         console.log("No duplicate email in db found");
@@ -64,8 +63,11 @@ app.post("/api/waitlist", async (req, res) => {
             return res.status(500).json({ error: "Failed to insert email" });
         }
 
-        console.log("Entry added successfully", email)
-        res.status(200).json({success: true});
+        return res.status(201).json({
+            success: true,
+            id: data?.[0]?.id,
+            created_at: data?.[0]?.created_at
+            })
     
     }
     catch (error) {
