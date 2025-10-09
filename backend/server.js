@@ -27,7 +27,9 @@ app.post("/api/waitlist", async (req, res) => {
     // check if there's a duplicate email in db 
     const {data: existingEmail, error: queryError} = await supabase 
     .from("waitlist")
-    .select('*')
+    .select("id")
+    .eq("email", email)
+    .maybeSingle();
     .eq('email', email)
     .maybeSingle();
 
