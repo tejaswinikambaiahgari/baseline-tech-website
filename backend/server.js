@@ -61,7 +61,7 @@ app.post("/api/waitlist", async (req, res) => {
 
         if (insertError) {
             console.error("Supabase insert error:", insertError);
-            throw insertError;
+            return res.status(500).json({ error: "Failed to insert email" });
         }
 
         console.log("Entry added successfully", email)
