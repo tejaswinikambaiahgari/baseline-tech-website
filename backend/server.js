@@ -37,7 +37,14 @@ app.post("/api/waitlist", async (req, res) => {
         console.log("No duplicate email in db found");
     } else if (queryError) {
         console.log("Supabase error", queryError);
-        return res.status(400).json({error: "Something went wrong with Supabase"});
+        if (queryError) {
+            console.error("Supabase query error:", queryError);
+            return res.status(500).json({error: "Database query failed"});
+        }
+        if (existingEmail) {
+            return res.status(409).json({error: "Duplicate email"});
+        }
+
     }
     
     // throw error there is an existing email 
