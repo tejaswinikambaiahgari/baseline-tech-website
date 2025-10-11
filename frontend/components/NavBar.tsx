@@ -1,23 +1,33 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
+import logo from "../public/baseline_tech_OG_logo.png"
 
 export default function NavBar() {
     return (
-        <nav className="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
-            <div className="mx-auto max-w-7xl px-6 py-3 flex justify-between items-center">
-                <Link href="/" className="text-xl font-semibold text-gray-800">SnoWin</Link>
+        <nav className="w-full h-[12.5vh] bg-[#65b4d0] shadow-sm fixed top-0 left-0 z-50">
+            <div className="mx-auto max-w-7xl h-full px-6 py-3 flex justify-between items-center">
+                <Link href="/" className="flex items-center">
+                    <Image src={logo} alt="Logo" width={383}
+                           height={100} className="cursor-pointer" priority />
+                </Link>
 
-                <div className="space-x-6">
-                    <Link href="/about" className="text-gray-600 hover:text-gray-900">
-                        About
+                <div className="space-x-6 md:space-x-10 lg:space-x-14
+                        text-md md:text-lg lg:text-xl [font-family:var(--font-solway)] whitespace-nowrap">
+                    <Link href="/product" className="text-white hover:text-gray-600">
+                        PRODUCT
                     </Link>
 
-                    <Link href="/projects" className="text-gray-600 hover:text-gray-900">
-                        Projects
+                    <Link href="/simulator" className="text-white hover:text-gray-600">
+                        SIMULATOR
                     </Link>
 
-                    <Link href="/contact" className="text-gray-600 hover:text-gray-900">
-                        Contact
+                    <Link href="/about" className="text-white hover:text-gray-600">
+                        ABOUT
+                    </Link>
+
+                    <Link href="/joinus" className="text-white hover:text-gray-600">
+                        JOIN US!
                     </Link>
                 </div>
             </div>
