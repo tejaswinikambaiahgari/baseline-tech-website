@@ -26,7 +26,10 @@ export default function NavBar() {
                         ABOUT
                     </Link>
 
-                    <Link href="/joinus" className="text-white hover:text-gray-600">
+                    <Link href="/joinus" className="bg-white text-[#65b4d0] font-semibold px-4
+                                                        py-2 rounded-lg hover:bg-[#4aa0bc]
+                                                        hover:text-white transition-all
+                                                        duration-200 shadow-sm hover:shadow-md">
                         JOIN US!
                     </Link>
                 </div>
