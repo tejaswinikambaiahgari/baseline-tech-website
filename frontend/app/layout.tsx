@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import NavBar from "../components/NavBar";
+import { Solway } from "next/font/google"
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -11,11 +13,17 @@ const geistMono = Geist_Mono({
     subsets: ["latin"],
 });
 
+const solway = Solway({
+    variable: "--font-solway",
+    weight: "700",
+});
+
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable} bg-gray-100`}>
-                {children}
+            <body className={`${geistSans.variable} ${geistMono.variable} ${solway.variable} bg-gray-100`}>
+                <NavBar />
+                <main className="pt-16">{children}</main>
             </body>
         </html>
     );
