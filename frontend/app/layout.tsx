@@ -23,7 +23,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
         <html lang="en">
             <body className={`${geistSans.variable} ${geistMono.variable} ${solway.variable} bg-gray-100`}>
                 <NavBar />
-                <main className="pt-16">{children}</main>
+                <main className="mt-24">{children}</main>
             </body>
         </html>
     );
