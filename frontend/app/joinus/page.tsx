@@ -10,11 +10,11 @@ export default function JoinUsPage() {
                 {/* Top Section of Updates */}
                 <section className="w-[49%] bg-[#e8f4f8] rounded-t-3xl shadow-lg py-16 px-8 flex
                                     flex-col items-center text-center">
-                    <h1 className="text-5xl font-bold text-[#65b4d0] mb-6">Stay Tuned</h1>
-                    <p className="max-w-2xl text-lg text-gray-700">
-                        SnoWin is launching updates soon! Keep on the lookout and be the first to
+                    <h1 className="text-5xl font-extrabold text-[#65b4d0] mb-6">STAY TUNED</h1>
+                    <p className="max-w-2xl text-lg text-gray-700 italic">
+                        "SnoWin is launching updates soon! Keep on the lookout and be the first to
                         experience the snow all-year round from the comfort of indoors through our very
-                        own snow simulators. Be the first to get early access updates!
+                        own snow simulators. Be the first to get early access updates!"
                     </p>
                 </section>
 
@@ -33,7 +33,7 @@ export default function JoinUsPage() {
                     {/* Right Box (Button) */}
                     <div className="flex-[0.4] bg-[#65b4d0] flex items-center justify-center
                                     hover:scale-[1.03] transition-transform cursor-pointer">
-                        <button className="text-white font-semibold text-xl hover:text-gray-100
+                        <button className="text-white font-semibold text-3xl hover:text-gray-100
                                             transition">
                             Join Waitlist
                         </button>
