@@ -1,8 +1,12 @@
 "use client"
 import Image from "next/image"
 import snowflake from "../../public/snowflake_sample.jpg"
+import { useState } from "react";
+import JoinWaitlistModal from "../../components/joinus/JoinWaitlistModal";
 
 export default function JoinUsPage() {
+    const [ isModalOpen, setIsModalOpen ] = useState(false)
+
     return (
         <main className="min-h-screen flex flex-col items-center justify-start bg-white
                          text-gray-800">
@@ -31,12 +35,14 @@ export default function JoinUsPage() {
                     </div>
 
                     {/* Right Box (Button) */}
-                    <div className="flex-[0.4] bg-[#65b4d0] flex items-center justify-center
+
+                    <div onClick={() => setIsModalOpen(true)}
+                         className="flex-[0.4] bg-[#65b4d0] flex items-center justify-center
                                     hover:scale-[1.03] transition-transform cursor-pointer">
-                        <button className="text-white font-semibold text-3xl hover:text-gray-100
-                                            transition">
+                        <span className="text-white font-semibold text-2xl hover:text-gray-100
+                                           transition">
                             Join Waitlist
-                        </button>
+                        </span>
                     </div>
                 </section>
             </section>
@@ -59,6 +65,8 @@ export default function JoinUsPage() {
                     ))}
                 </div>
             </section>
+            
+            <JoinWaitlistModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </main>
     );
 }
