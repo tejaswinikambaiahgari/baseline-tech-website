@@ -17,8 +17,7 @@ export function useWaitlist() :UseWaitlistReturn {
     return {
         submitWaitlist: async (data) => {
             try {
-                const res = await mutation.mutateAsync(data);
-                return res;
+                return await mutation.mutateAsync(data);
             } catch (err) {
                 return null;
             }
