@@ -13,14 +13,21 @@ export async function getHealth() {
     return response.data
 }
 
-// TODO: Data Types are just placeholders for what information we'll actually get from the form.
-export async function postWaitlist(data :{
+// TODO: Both these types are temporary placeholders until we figure out what we want them to have.
+export interface WaitlistInput {
     name:             string;
     email:            string;
     age:              number;
     snow_sport_level: string;
-}) {
-    const response = await apiClient.post('/waitlist', data);
+}
+
+export interface WaitlistResponse {
+    message: string;
+    id?:     string;
+}
+
+export async function postWaitlist(data :WaitlistInput) :Promise<WaitlistResponse> {
+    const response = await apiClient.post<WaitlistResponse>('/api/waitlist', data);
     return response.data
 }
 
