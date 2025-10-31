@@ -1,30 +1,15 @@
-import {postWaitlist, WaitlistInput, WaitlistResponse} from "../lib/api/apiClient";
-import {useMutation} from "@tanstack/react-query";
+import { postWaitlist } from "../lib/api/apiClient";
+import { useMutation } from "@tanstack/react-query";
 
 
-export interface UseWaitlistReturn {
-    submitWaitlist: (data :WaitlistInput) => Promise<WaitlistResponse | null>;
-    isLoading: boolean
-    isSuccess: boolean
-    error: string | null;
+export interface WaitlistFormData {
+    email:        string;
+    phone_number: string;
 }
 
-export function useWaitlist() :UseWaitlistReturn {
-    const mutation = useMutation<WaitlistResponse, Error, WaitlistInput>({
-        mutationFn: async (data) => await postWaitlist(data)
+export function useWaitlist() {
+    return useMutation({
+        mutationFn: (data :WaitlistFormData) => postWaitlist(data),
     });
-
-    return {
-        submitWaitlist: async (data) => {
-            try {
-                return await mutation.mutateAsync(data);
-            } catch (err) {
-                return null;
-            }
-        },
-        isLoading: mutation.isPending,
-        isSuccess: mutation.isSuccess,
-        error: mutation.error?.message || null,
-    };
 }
 

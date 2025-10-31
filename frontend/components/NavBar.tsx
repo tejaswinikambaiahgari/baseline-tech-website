@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/baseline_tech_OG_logo.png"
 
+// TODO: Obsolete after Mid-Fis. Get from Ivy.
 export default function NavBar() {
     return (
         <nav className="w-full h-[12.5vh] bg-[#65b4d0] shadow-sm fixed top-0 left-0 z-50">
