@@ -55,8 +55,6 @@ export default function JoinUsPage() {
                     ))}
                 </div>
             </section>
-            
-            <JoinWaitlistModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </main>
     );
 }

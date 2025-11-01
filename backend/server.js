@@ -17,7 +17,7 @@ app.use(express.json());
 
 // --- waitlist route --- 
 app.post("/api/waitlist", async (req, res) => {
-    const {name, email, age, snow_sport_level }  = req.body;
+    const { name, email, age, snow_sport_level }  = req.body;
 
     // check if name is valid 
     if (!name) {
