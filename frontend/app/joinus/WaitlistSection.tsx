@@ -1,7 +1,10 @@
 "use client"
 
+import Image from "next/image"
 import { useState } from "react";
 import { useWaitlist } from "../../hooks/useWaitlist";
+
+import waitlistBG from "../../public/images/joinus/waitlist_bg.png"
 
 export default function WaitlistSection() {
     const [ email, setEmail ] = useState("");
@@ -16,8 +19,7 @@ export default function WaitlistSection() {
     return (
         <section className="relative h-[80vh] flex flex-col justify-center items-center text-white
                             bg-cover bg-center"
-                 // TODO: Get a Mountain Picture, NOW!
-                 style={{ backgroundImage: "url('/images/mountain-bg.jpg')" }}>
+                 style={{ backgroundImage: `url(${waitlistBG.src})` }}>
             <div className="absolute inset-0 bg-black bg-opacity-50" />
 
             <div className="relative z-10 text-center px-4 max-w-md">
