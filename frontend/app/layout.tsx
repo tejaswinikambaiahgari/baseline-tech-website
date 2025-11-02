@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "../components/NavBar";
-import { Solway } from "next/font/google"
+import { Solway, Epilogue, Manrope } from "next/font/google"
 import {Providers} from "./providers";
 
 const geistSans = Geist({
@@ -19,10 +19,21 @@ const solway = Solway({
     weight: "700",
 });
 
+const epilogue = Epilogue({
+    variable: "--font-epilogue",
+    weight: "600",
+});
+
+const manrope = Manrope({
+    variable: "--font-manrope",
+    weight: ["400", "600"],
+});
+
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable} ${solway.variable} bg-gray-100`}>
+            <body className={`${geistSans.variable} ${geistMono.variable} ${solway.variable} 
+                            ${epilogue.variable} ${manrope.variable} bg-gray-100`}>
                 <Providers>
                     <NavBar />
                     <main className="mt-24">{children}</main>

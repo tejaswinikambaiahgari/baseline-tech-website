@@ -13,7 +13,8 @@ export default function CommunitySection() {
     const images = [ comm1, comm2, comm3, comm4, comm5, comm6, comm7, comm8 ];
 
     return (
-        <section className="bg-gradient-to-b from-slate-800 to-slate-900 text-white py-16 px-8">
+        <section className="bg-[radial-gradient(circle_at_center,_#65b4d0_0%,_#232222_100%)]
+                            text-white py-16 px-8">
             <h2 className="text-3xl font-semibold mb-10 text-center">Our Community</h2>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
