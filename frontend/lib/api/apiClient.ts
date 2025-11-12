@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import {WaitlistFormData} from "../../hooks/useWaitlist";
+import {WaitlistForm} from "../../hooks/useWaitlist";
 
 const apiClient = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5173',
@@ -19,7 +19,7 @@ export interface WaitlistResponse {
     id?:     string;
 }
 
-export async function postWaitlist(data :WaitlistFormData) :Promise<WaitlistResponse> {
+export async function postWaitlist(data :WaitlistForm) :Promise<WaitlistResponse> {
     const response = await apiClient.post<WaitlistResponse>('/api/waitlist', data);
     return response.data
 }
