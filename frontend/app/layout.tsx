@@ -14,7 +14,7 @@ const manrope    = Manrope({ variable: "--font-manrope", weight: ["400", "600"],
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={``}>
+    <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${solway.variable} 
                         ${kantumruy.variable} ${sedgwick.variable} ${epilogue.variable} 
                         ${manrope.variable} bg-gray-100`}>
