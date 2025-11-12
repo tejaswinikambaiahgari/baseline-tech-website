@@ -1,95 +1,92 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import { useEffect, useRef, useState } from 'react';
+import Carousel from '../components/Carousel';
 
-export default function Home() {
+type BannerOffsets = { imgY: number; textY: number };
+
+export default function Page() {
+  const bannerRef = useRef<HTMLElement | null>(null);
+  const [bannerOffsets, setBannerOffsets] = useState<BannerOffsets>({ imgY: 0, textY: 0 });
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const prefersReduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    let raf: number | null = null;
+
+    const onScroll = () => {
+      if (raf !== null) return;
+      raf = window.requestAnimationFrame(() => {
+        const y = window.scrollY; 
+        document.documentElement.style.setProperty('--px', `${y * 0.25}px`);
+
+        const section = bannerRef.current;
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const sectionTopInDoc = y + rect.top;
+          const local = Math.max(0, y - sectionTopInDoc);
+          const imgY = local * 0.20;
+          const textY = local * -0.10;
+          setBannerOffsets({ imgY, textY });
+        }
+
+        raf = null;
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (raf !== null) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      {/* HERO */}
+      <section className="hero" aria-label="Hero">
+        <img src="/hero-image.png" alt="Snowboarder carving down a slope" className="hero-image" />
+      </section>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+      <Carousel />
+
+      {/* SECTION 2 — Centered “Why us” */}
+      <section className="section why" aria-labelledby="why-heading">
+       <div className="why-wrap">
+        <h2 id="why-heading" className="why-hero">SnowIn is the all-in-one lorem ipsum</h2>
+        <p className="why-sub">Lorem ipsum dolor sit amet consectetur. Lacus et volutpat sapien mauris.</p>
+
+       <figure className="why-figure">
+        <img src="/snowboards.png" alt="Snowboards on a bench" />
+       </figure>
+
+       <div className="why-cols">
+        <p><strong>Track your progress.</strong> Nunc proin aliquam tellus habitasse suspendisse gravida. Metus phasellus ridiculus nisi velit libero.</p>
+        <p><strong>See your potential.</strong> Nunc proin aliquam tellus habitasse suspendisse gravida. Metus phasellus ridiculus nisi velit libero.</p>
+        <p><strong>Perform. Rinse. Repeat.</strong> Nunc proin aliquam tellus habitasse suspendisse gravida. Metus phasellus ridiculus nisi velit libero.</p>
+       </div>
+       </div>
+      </section>
+
+
+      {/* BANNER */}
+      <section className="full-bleed image-banner" aria-label="Banner image" ref={bannerRef}>
+        <img
+          src="https://i.pinimg.com/1200x/25/2d/9f/252d9fa45e13201c8ab2e501b9b4f22c.jpg"
+          alt="A biker adventure"
+          className="banner-image"
+          style={{ transform: `translateY(${bannerOffsets.imgY}px)` }}
+        />
+        <div
+          className="banner-overlay"
+          style={{ transform: `translateY(${bannerOffsets.textY}px)` }}
+        >
+          <h2 className="banner-text">Every Turn Tells A Story</h2>
+          <a className="button-59 banner-cta" href="#join">Join Our Community</a>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+    </>
   );
 }
