@@ -20,7 +20,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
                         ${manrope.variable} bg-gray-100`}>
         <Providers>
             <NavBar />
-            <main className="mt-24">{children}</main>
+            <main>{children}</main>
         </Providers>
       </body>
     </html>

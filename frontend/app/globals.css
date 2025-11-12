@@ -45,20 +45,20 @@ a {
   }
 }
 
-/* added homepage css */
+ /*added homepage css */
 
 :root{
-  --g0:#000000; 
+  --g0:#000000;
   --g1:#1b1d1f;
   --g2:#2a2e31;
   --g3:#5a5f63;
-  --g4:#8f9498; 
+  --g4:#8f9498;
   --g5:#7f8284;
 
-  --bg-1: #0b0b0c;               
-  --text-900: #ffffff;           
+  --bg-1: #0b0b0c;
+  --text-900: #ffffff;
   --text-600: rgba(255,255,255,.85);
-  --fade-soft: linear-gradient(   
+  --fade-soft: linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0%,
     rgba(0,0,0,.25) 45%,
