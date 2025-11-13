@@ -1,12 +1,12 @@
 'use client';
-import { useRef, useState } from 'react';
 
+import { useRef, useState } from 'react';
 
 export default function Carousel() {
   const firstSlide = {
-    kicker: 'Snowin Sensor',
+    kicker: 'Smart Sensor',
     title: 'Meet Snowin',
-    headline: 'Your Potential,\nOur Passion',
+    headline: 'Your Board,\nUpgraded.',
     body:
       'Your board, upgraded. The SnowIn Core attaches seamlessly to any snowboard, tracking speed, airtime, turns, and balance in real time. Lightweight. Waterproof. Impact-proof. Ready for every run.',
     cta: 'Learn More',
@@ -69,7 +69,7 @@ export default function Carousel() {
                   ))}
                 </h3>
                 <p className="slide-body">{s.body}</p>
-                <a className="button-59 ghost" href="#learn-more">{s.cta}</a>
+                <a className="button-59 banner-cta" href="#learn-more">{s.cta}</a>
               </div>
 
               <figure className={`slide-asset ${s.img === '/drone.png' ? 'is-drone' : ''}`}>
