@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Carousel from '../components/Carousel';
+import "./homepage.css";
 
 type BannerOffsets = { imgY: number; textY: number };
 
@@ -55,7 +56,7 @@ export default function Page() {
       {/* SECTION 2 — Centered “Why us” */}
       <section className="section why" aria-labelledby="why-heading">
        <div className="why-wrap">
-        <h2 id="why-heading" className="why-hero">SnowIn is the all-in-one precision tracker</h2>
+        <h2 id="why-heading" className="why-hero">Train Smarter. Ride in Flow.</h2>
         <p className="why-sub">So you can push harder, ride smarter, and relive every line.</p>
 
        <figure className="why-figure">
@@ -84,7 +85,8 @@ export default function Page() {
           style={{ transform: `translateY(${bannerOffsets.textY}px)` }}
         >
           <h2 className="banner-text">Every Turn Tells A Story...</h2>
-          <a className="button-59 banner-cta" href="#join">Join Our Community</a>
+          <p className="banner-caption"> Let's capture yours! </p>
+          <a className="button-59 banner-cta" href="#join">Join Us</a>
         </div>
       </section>
     </>
