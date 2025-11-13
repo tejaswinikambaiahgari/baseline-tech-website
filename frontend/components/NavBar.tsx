@@ -1,15 +1,15 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../public/baseline_tech_OG_logo.png"
+import logo from "../public/flowmersion-logo.png"
 
 export default function NavBar() {
     return (
         <nav className="w-full h-[12.5vh] bg-[#65b4d0] shadow-sm fixed top-0 left-0 z-50">
             <div className="mx-auto max-w-7xl h-full px-6 py-3 flex justify-between items-center">
                 <Link href="/" className="flex items-center">
-                    <Image src={logo} alt="Logo" width={383}
-                           height={100} className="cursor-pointer" priority />
+                    <Image src={logo} alt="Logo" width={100}
+                           height={30} className="cursor-pointer" priority />
                 </Link>
 
                 <div className="space-x-6 md:space-x-10 lg:space-x-14

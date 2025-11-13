@@ -1,19 +1,36 @@
 'use client';
 import { useRef, useState } from 'react';
-// If you want to use a local image, copy it to /public and use "/prototype.png":
-// import prototypeImage from '/prototype.png';  // using plain <img>, not next/image
+
 
 export default function Carousel() {
-  const baseSlide = {
+  const firstSlide = {
     kicker: 'Snowin Sensor',
     title: 'Meet Snowin',
     headline: 'Your Potential,\nOur Passion',
     body:
-      'Lorem ipsum dolor sit amet consectetur. Condimentum aliquam nunc vestibulum proin aliquam tellus habitasse suspendisse gravida. Metus phasellus ridiculus nisi velit libero vel id.',
+      'Your board, upgraded. The SnowIn Core attaches seamlessly to any snowboard, tracking speed, airtime, turns, and balance in real time. Lightweight. Waterproof. Impact-proof. Ready for every run.',
     cta: 'Learn More',
-    img: '/prototype.png', // path from /public
+    img: '/product-image.png', // path from /public
   };
-  const slides = [baseSlide, baseSlide, baseSlide];
+  const secondSlide = {
+    kicker: 'Meet our Simulator',
+    title: 'Indoor Simulator',
+    headline: 'Make snowboarding\n safe, trainable, and\n accessible all year round.',
+    body:
+      'Train smarter before you hit the snow.',
+    cta: 'Learn More',
+    img: '/drone.png', // path from /public
+  };
+  const thirdSlide = {
+    kicker: 'Snowin App',
+    title: 'Meet Snowin App',
+    headline: 'Track, analyze, perform,\nrepeat.',
+    body:
+      'Your mountain, visualized. Sync your core to the SnowIn app to see live stats, 3D ride replays, and detailed performance analytics.',
+    cta: 'Learn More',
+    img: '/phone.png', // path from /public
+  };
+  const slides = [firstSlide, secondSlide, thirdSlide];
 
   const [index, setIndex] = useState(0);
   const timerRef = useRef(null);
@@ -55,9 +72,13 @@ export default function Carousel() {
                 <a className="button-59 ghost" href="#learn-more">{s.cta}</a>
               </div>
 
-              <figure className="slide-asset">
-                <img src={s.img} alt="Snowin product" />
-              </figure>
+              <figure className={`slide-asset ${s.img === '/drone.png' ? 'is-drone' : ''}`}>
+                {s.img === '/drone.png' ? (
+                    <img src={s.img} alt={s.title} className="slide-img--drone" />
+                ) : (
+                    <img src={s.img} alt={s.title} />
+                )}
+                </figure>
             </div>
           </article>
         ))}
