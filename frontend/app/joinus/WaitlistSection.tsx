@@ -1,19 +1,36 @@
 "use client"
 
-import Image from "next/image"
 import { useState } from "react";
-import { useWaitlist } from "../../hooks/useWaitlist";
-
+import { useForm } from 'react-hook-form'
+import {useWaitlist, WaitlistForm} from "../../hooks/useWaitlist";
 import waitlistBG from "../../public/images/joinus/waitlist_bg.png"
 
-export default function WaitlistSection() {
-    const [ email, setEmail ] = useState("");
-    const [ phone, setPhone ] = useState("");
-    const { mutate, isPending, isSuccess, isError } = useWaitlist()
+interface WaitlistModalProps {
+    trigger?: React.ReactNode;
+}
+
+export default function WaitlistSection({ trigger }: WaitlistModalProps) {
+    const [ open, setOpen ] = useState(false);
+    const { addToWaitlist } = useWaitlist()
+
+    const form = useForm<WaitlistForm>({
+        defaultValues: {
+            name: '',
+            email: '',
+            phoneNumber: '',
+            age: 18,
+            skillLevel: undefined,
+        }
+    })
 
     const handleSubmit = (e :React.FormEvent) => {
         e.preventDefault()
-        mutate({ email: email, phone_number: phone })
+        addToWaitlist({ name: name,
+                        email: email,
+                        phone_number: phone,
+                        age: age,
+                        skillLevel: skillLevel,
+        })
     };
 
     return (
@@ -42,12 +59,12 @@ export default function WaitlistSection() {
                                                                             placeholder-gray-300
                                                                             focus:outline-none"
                            value={phone} onChange={(e) => setPhone(e.target.value)} />
-                    <button type="submit" disabled={isPending} className="met-2 bg-white text-black
+                    <button type="submit" disabled={isLoading} className="met-2 bg-white text-black
                                                                          font-semibold py-3
                                                                          rounded-md
                                                                          hover:bg-gray-200
                                                                          transition">
-                        { isPending ? "Joining..." : "Join Our Community" }
+                        { isLoading ? "Joining..." : "Join Our Community" }
                     </button>
                 </form>
 

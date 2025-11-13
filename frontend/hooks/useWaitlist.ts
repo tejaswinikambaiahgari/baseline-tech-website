@@ -6,9 +6,9 @@ type SkillLevel = "Complete Beginner" | "Beginner" | "Intermediate" | "Advanced"
 export interface WaitlistForm {
     name: string;
     email: string;
-    phone_number?: string;
+    phoneNumber?: string;
     age: number;
-    skill_level: SkillLevel;
+    skillLevel: SkillLevel;
 }
 
 export function useWaitlist() {

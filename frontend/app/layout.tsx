@@ -19,7 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
                         ${kantumruy.variable} ${sedgwick.variable} ${epilogue.variable} 
                         ${manrope.variable} bg-gray-100`}>
         <Providers>
-            <NavBar />
+            {/*<NavBar />*/}
             <main>{children}</main>
         </Providers>
       </body>
