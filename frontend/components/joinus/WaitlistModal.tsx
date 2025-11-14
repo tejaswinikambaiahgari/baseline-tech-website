@@ -1,7 +1,7 @@
+"use client"
+
 import { useState } from "react";
-import { useWaitlist, WaitlistForm } from "../../hooks/useWaitlist";
-import { set, useForm } from "react-hook-form";
-import {Dialog} from "next/dist/next-devtools/dev-overlay/components/dialog/dialog";
+import {SkillLevel, useWaitlist, WaitlistForm} from "../../hooks/useWaitlist";
 
 interface WaitlistModalProps {
     trigger?: React.ReactNode;
@@ -9,76 +9,105 @@ interface WaitlistModalProps {
 
 export default function WaitlistSection({ trigger }: WaitlistModalProps) {
     const [ open, setOpen ] = useState(false);
-    const { addToWaitlist } = useWaitlist()
 
-    const form = useForm<WaitlistForm>({
-        defaultValues: {
-            name: '',
-            email: '',
-            phoneNumber: '',
-            age: 18,
-            skillLevel: undefined,
-        }
-    })
+    const [ name, setName ] = useState("");
+    const [ email, setEmail ] = useState("");
+    const [ phoneNumber, setPhoneNumber ] = useState("");
+    const [ age, setAge ] = useState(18);
+    const [ skillLevel, setSkillLevel ] = useState<SkillLevel>("Complete Beginner");
 
-    const onSubmit = async (data: WaitlistForm) => {
-        try {
-            const backendData = {
-                name: data.name,
-                email: data.email,
-                phoneNumber: data.phoneNumber || undefined,
-                age: data.age,
-                skillLevel: data.skillLevel,
-            }
+    const { addToWaitlist, isLoading } = useWaitlist()
 
-            addToWaitlist(backendData)
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        addToWaitlist({ name, email, phoneNumber, age, skillLevel });
 
-            form.reset()
-            setOpen(false)
-        } catch (error) {
-            console.error('Error submitting waitlist:', error)
-        }
+        setOpen(false);
+        setName("");
+        setEmail("");
+        setPhoneNumber("");
+        setAge(18);
+        setSkillLevel("Complete Beginner");
     }
 
     return (
-        <div onClick={() => setOpen(true)} className="cursor-pointer">
-            { trigger ? trigger : (
-                <button className="px-6 py-2 rounded-lg bg-[#65b4d0] text-white font-semibold hover:bg-[#4ca2bf] transition">
-                    Get Early Access
-                </button>
-            )}
+        <>
+            <button onClick={() => setOpen(true)}
+                    className="px-4 py-2 rounded-lg bg-white text-black font-semibold
+                             hover:bg-gray-200 transition">
+                { trigger || "Join Waitlist" }
+            </button>
 
-            {/* Modal */}
-            { open  && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60
-                                backdrop-blur-sm"
+             {/*  Modal Pop-Up  */}
+            { open && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex
+                                justify-center items-center z-50"
                      onClick={() => setOpen(false)}>
-                    <div className="bg-white rounded-2xl shadow-xl p-8 w-[90%] max-w-md relative"
+                    {/* Modal */}
+                    <div className="bg-white text-black p-6 rounded-lg w-full max-w-md relative shadow-xl"
                          onClick={(e) => e.stopPropagation()}>
                         {/* Close Button */}
                         <button onClick={() => setOpen(false)}
-                                className="absolute top-3 right-3 text-gray-500 hover:text-gray-700
-                                           text-2xl">
-                            &times
+                                className="absolute top-3 right-3 text-gray-500 hover:text-black
+                                           text-lg">
+                            ✕
                         </button>
 
-                        <h2 className="text-2xl font-semibold mb-4 text-center text-gray-800">
-                            Join The Waitlist
-                        </h2>
+                        <h2 className="text-2xl font-bold mb-2">Join The Waitlist</h2>
+                        <p className="text-gray-700 mb-4">
+                            Be the first to hear about updates and exclusives.
+                        </p>
 
-                        <form onSubmit={form.handleSubmit(onSubmit)}
-                              className="flex flex-col space-y-4">
+                        <form onSubmit={handleSubmit} className="space-y-4">
                             <input type="text"
-                                   placeholder="Name"
-                                   {...form.register("name", { required: true })}
-                                   className="border border-gray-300 rounded-lg px-4 py-2
-                                              focus:outline-none focus:ring-2
-                                              focus:ring-[#65b4d0]" />
-                            <input />
+                                   placeholder="Full Name"
+                                   className="w-full p-3 border rounded-md"
+                                   value={name}
+                                   onChange={(e) => setName(e.target.value)}
+                                   required
+                            />
+
+                            <input type="email"
+                                   placeholder="Email"
+                                   className="w-full p-3 border rounded-md"
+                                   value={email}
+                                   onChange={(e) => setEmail(e.target.value)}
+                                   required
+                            />
+
+                            <input type="tel"
+                                   placeholder="Phone Number (Optional)"
+                                   className="w-full p-3 border rounded-md"
+                                   value={phoneNumber}
+                                   onChange={(e) => setPhoneNumber(e.target.value)}
+                            />
+
+                            <input type="number"
+                                   placeholder="Age"
+                                   className="w-full p-3 border rounded-md"
+                                   value={age}
+                                   onChange={(e) => setAge(parseInt(e.target.value))}
+                                   required
+                            />
+
+                            <select className="w-full p-3 border rounded-md"
+                                    value={skillLevel}
+                                    onChange={(e) => setSkillLevel(e.target.value as SkillLevel)}>
+                                <option value="Complete Beginner">Complete Beginner</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                            </select>
+
+                            <button type="submit"
+                                    className="w-full p-3 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                                    disabled={isLoading}>
+                                { isLoading ? "Joining..." : "Join Waitlist" }
+                            </button>
                         </form>
                     </div>
                 </div>
             )}
-        </div>
+        </>
     );
 }

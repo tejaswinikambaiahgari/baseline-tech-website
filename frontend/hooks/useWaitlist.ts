@@ -1,7 +1,7 @@
 import { postWaitlist } from "../lib/api/apiClient";
 import { useMutation } from "@tanstack/react-query";
 
-type SkillLevel = "Complete Beginner" | "Beginner" | "Intermediate" | "Advanced";
+export type SkillLevel = "Complete Beginner" | "Beginner" | "Intermediate" | "Advanced";
 
 export interface WaitlistForm {
     name: string;
