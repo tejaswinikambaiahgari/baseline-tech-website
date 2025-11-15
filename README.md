@@ -272,8 +272,6 @@ Meet Snowin  // Change this text
 Your Potential, Our Passion  // Change this text
 ```
 
-**Pro tip:** Use Find & Replace (Cmd/Ctrl + F) to find text across all files.
-
 ### Changing Images
 
 1. **Add your image to `/public/images/`**  
@@ -284,29 +282,6 @@ import heroImage from '@/public/images/hero/snowboarder.jpg'
 
 // After - use your image
 import heroImage from '@/public/images/hero/YOUR_IMAGE.jpg'
-```
-
-3. **Or use direct path:**
-```tsx
-
-```
-
-### Changing Button Styles
-```tsx
-// Primary button (default)
-
-  Click Me
-
-
-// Change to outlined button
-
-  Click Me
-
-
-// Change to different color
-
-  Click Me
-
 ```
 
 ### Changing Spacing
@@ -320,36 +295,6 @@ import heroImage from '@/public/images/hero/YOUR_IMAGE.jpg'
 // Less spacing
   // Vertical: 3rem, Horizontal: 1rem
 ```
-
-### Backup Color Schemes
-
-We've designed three alternative color schemes if you want to change the vibe:
-
-#### Dark Ice (Current)
-```javascript
-primary: '#65B4D0'      // Ice blue
-background: '#111827'   // Near black
-```
-
-#### Warm Sunset
-```javascript
-primary: '#F97316'      // Orange
-background: '#1C1917'   // Warm dark brown
-```
-
-#### Forest Green
-```javascript
-primary: '#10B981'      // Emerald
-background: '#064E3B'   // Deep green
-```
-
-#### Midnight Purple
-```javascript
-primary: '#8B5CF6'      // Purple
-background: '#1E1B4B'   // Deep blue-purple
-```
-
----
 
 ## Component Guide
 
@@ -390,13 +335,6 @@ className="text-snow-blue"        // Text color
 - Product names  
 - Card hover effects
 
-**To add a product:**
-```tsx
-
-  
-
-```
-
 ### Improve Section (Analytics Dashboard)
 
 **Location:** `components/ImproveSection.tsx`  
@@ -417,10 +355,10 @@ className="text-snow-blue"        // Text color
 
 **Why we used grid:**
 ```tsx
-// ✅ Good: Natural responsive layout
+// Good: Natural responsive layout
 grid-cols-1 lg:grid-cols-2
 
-// ❌ Avoid: Breaks on different screens
+// Avoid: Breaks on different screens
 position: absolute; left: 300px; top: 500px;
 ```
 
@@ -450,12 +388,6 @@ transform: `translateY(${scrollY * 0.3}px)`  // 30% of scroll speed
 - Logo sizes  
 - Grid layout
 
-**To add a partner:**
-```tsx
-
-  
-
-```
 
 ### Testimonials Section
 
@@ -599,14 +531,7 @@ npm install
 1. Image is in `/public/images/` folder  
 2. Path starts with `/images/` not `./images/`  
 3. File extension is correct (.jpg, .png, .svg)
-```tsx
-// ✅ Correct
 
-
-// ❌ Wrong
-
-
-```
 
 ### Tailwind Classes Not Working
 
@@ -659,7 +584,7 @@ Always use Next.js `<Image>` component:
 ```tsx
 import Image from 'next/image'
 
-// ✅ Optimized
+// Optimized
 <Image 
   src="/images/hero.jpg"
   alt="Description"
@@ -667,8 +592,6 @@ import Image from 'next/image'
   height={800}
   priority  // For above-the-fold images
 />
-
-// ❌ Not optimized
 
 ```
 
@@ -730,29 +653,6 @@ export default function Home() {
 
 ---
 
-## Best Practices
-
-### Do's ✅
-
-- Use Tailwind utility classes  
-- Test on multiple screen sizes  
-- Keep components under 300 lines  
-- Use semantic HTML (`<section>`, `<article>`, `<nav>`)  
-- Add alt text to all images  
-- Use `max-w-*` classes to prevent content stretching  
-- Commit code frequently with clear messages
-
-### Don'ts ❌
-
-- Don't use inline styles (use Tailwind classes)  
-- Don't use absolute positioning for layout (use flex/grid)  
-- Don't hardcode colors (use Tailwind colors)  
-- Don't forget to test mobile view  
-- Don't use `<img>` (use Next.js `<Image>`)  
-- Don't commit `.env` files
-
----
-
 ## Support & Resources
 
 ### Documentation
@@ -781,22 +681,7 @@ npm update          # Update dependencies
 
 ## Contact
 
-**Developer:** Arshia @ Baseline Tech  
-**Email:** verma.arsh@northeastern.edu  
-**Project Repository:** [GitHub Link]
-
-**For support with:**  
-- Bug reports  
-- Feature requests  
-- Customization questions  
-- Deployment issues
-
-Please include:  
-- Description of issue  
-- Screenshots (if visual)  
-- Browser and device info  
-- Steps to reproduce
-
+**Developers:** Madison, Ivy, Harsh, London, Arshia
 ---
 
 ## Version History
@@ -808,11 +693,3 @@ Please include:
 - Production-ready
 
 ---
-
-## License
-
-[Your License Here]
-
----
-
-**Built with ❄️ by Baseline Tech**
