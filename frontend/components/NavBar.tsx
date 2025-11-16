@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/flowmersion-logo.png"
+import AboutUs from "./AboutUs";
 
 export default function NavBar() {
     return (
