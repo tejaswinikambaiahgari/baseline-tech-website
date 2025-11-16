@@ -147,11 +147,22 @@ export default function AboutUs() {
                             {faqData.map((faq, index) => (
                                 <details
                                     key={index}
+                                    className="group"
                                 >
                                     <summary
                                         className="text-xl font-semibold text-white cursor-pointer flex justify-between items-center">
                                         {faq.question}
-                                        <span>▼</span>
+                                        <svg
+                                            width="25"
+                                            height="50"
+                                            viewBox="0 0 25 50"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="transition-transform duration-300 group-open:rotate-90"
+                                        >
+                                            {/*SVG for arrow*/}
+                                            <path d="M5.07147 13.6089L7.26587 11.4166L19.2182 23.3648C19.4109 23.5562 19.5638 23.7839 19.6681 24.0347C19.7725 24.2854 19.8262 24.5544 19.8262 24.826C19.8262 25.0976 19.7725 25.3665 19.6681 25.6173C19.5638 25.8681 19.4109 26.0957 19.2182 26.2872L7.26587 38.2416L5.07354 36.0492L16.2917 24.8291L5.07147 13.6089Z" fill="white"/>
+                                        </svg>
                                     </summary>
                                     <p className="mt-4 text-gray-300">
                                         {faq.answer}
