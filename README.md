@@ -1,6 +1,6 @@
-# SnowIn Website Documentation
+# FlowMersion Website Documentation
 
-**Project:** SnowIn Winter Sports Application Marketing Site  
+**Project:** FlowMersion Winter Sports Application Marketing Site  
 **Client:** Baseline Tech  
 **Tech Stack:** React, TypeScript, Tailwind CSS, Next.js  
 **Last Updated:** November 2025
