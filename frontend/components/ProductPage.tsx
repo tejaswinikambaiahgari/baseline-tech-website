@@ -1,19 +1,10 @@
 "use client";
 
+
 import Image from "next/image";
 import React, { useEffect, useRef} from 'react';
-
-//Images
-import App1 from './photos(pp)/App1.png';
-import mountain from "./photos(pp)/mountainphone.png"
-import testimony1 from './photos(pp)/testimony1.png';
-import testimony2 from './photos(pp)/testimony2.png';
-import testimony3 from './photos(pp)/testimony3.png';
-import PH from './photos(pp)/PH.png';
-import Analytics from './photos(pp)/Analytics.png';
-import Group31 from './photos(pp)/Group 31.png';
-import Group32 from './photos(pp)/Group 32.png';
 import { StaticImageData } from "next/image";
+
 
 /**
  * Add images to public then add them here to add companies to Trusted By Panel
@@ -24,6 +15,7 @@ const companies = [
     '/SkiHausTrustByPanel.png'
 ];
 
+
 /**
  * Image carousel for trusted by section
  * @constructor
@@ -31,26 +23,33 @@ const companies = [
 const ImageCarousel = () => {
     const scrollRef = useRef<HTMLDivElement | null>(null);
 
+
     useEffect(() => {
         const container = scrollRef.current;
         if (!container) return;
 
+
         let pos = -1;
+
 
         const scroll = () => {
             if (!container) return;
+
 
             pos += 1; // Scroll speed
             if (pos >= container.scrollWidth / 2) {
                 pos = 0;
             }
 
+
             container.style.transform = `translateX(-${pos}px)`;
             requestAnimationFrame(scroll);
         };
 
+
         requestAnimationFrame(scroll);
     }, []);
+
 
     return (
         <div className="overflow-hidden w-full">
@@ -64,6 +63,8 @@ const ImageCarousel = () => {
                         key={i}
                         src={logo}
                         alt="company logo"
+                        width={200}
+                        height={200}
                         className="object-contain h-[200px] w-auto"
                     />
                 ))}
@@ -72,15 +73,17 @@ const ImageCarousel = () => {
     );
 }
 
+
 /**
  * Template for testimonial cards
  */
 interface TestimonialCardProps {
-    picture: StaticImageData;
+    picture: string | StaticImageData;
     quote: string;
     name: string;
     position: string;
 }
+
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ picture, quote, name, position }) => {
     return (
@@ -95,6 +98,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ picture, quote, name,
                 />
             </div>
 
+
             {/* Content */}
             <div className="flex-1 flex flex-col">
                 {/*Quote*/}
@@ -103,6 +107,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ picture, quote, name,
                         &#34;{quote}&#34;
                     </p>
                 </div>
+
 
                 {/* Name and Position */}
                 <div className="mt-2">
@@ -115,7 +120,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ picture, quote, name,
     );
 };
 
-const Product_page: React.FC = () => {
+
+export default function ProductPage() {
     return (
         <div className="w-full overflow-x-hidden">
             {/* Panel 1 */}
@@ -130,6 +136,7 @@ const Product_page: React.FC = () => {
                             className="object-contain rounded-[14px]"
                         />
                     </div>
+
 
                     {/* Text on Right*/}
                     <div className="lg:flex-1 text-white flex flex-col space-y-6 md:space-y-8 lg:pr-8 text-center lg:text-left">
@@ -153,6 +160,7 @@ const Product_page: React.FC = () => {
                 </div>
             </div>
 
+
             {/* Panel 2 */}
             <div className="flex px-6 md:px-12 lg:px-20 py-12 md:py-20 mb-20">
                 <div className="flex flex-col lg:flex-row gap-8 items-center max-w-7xl mx-auto w-full">
@@ -163,10 +171,11 @@ const Product_page: React.FC = () => {
                         </h2>
                     </div>
 
+
                     {/* Image*/}
                     <div className="px-4 md:px-12 w-full max-w-[772px] aspect-[772/675] rounded-[10px] overflow-hidden mx-auto">
                         <video
-                            src="/video.mp4"
+                            src="/snowboardingvideo.mp4"
                             autoPlay
                             muted
                             loop
@@ -177,13 +186,14 @@ const Product_page: React.FC = () => {
                 </div>
             </div>
 
+
             {/* Panel 3  */}
             <div className="px-6 md:px-12 lg:px-20 py-20 md:py-32 relative">
                 <div className="max-w-7xl mx-auto relative">
                     {/* ountain Background */}
                     <div className="absolute left-0 top-[-100px] md:top-[-150px] lg:top-[-200px] z-0 h-[400px] w-[600px] md:h-[700px] md:w-[1000px] lg:h-[800px] lg:w-[1200px] pointer-events-none opacity-40">
                         <Image
-                            src={mountain}
+                            src="/mountain.png"
                             alt="mountain"
                             fill
                             className="object-contain object-left"
@@ -191,13 +201,17 @@ const Product_page: React.FC = () => {
                     </div>
 
 
+
+
                     <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0">
+
 
                         {/* Phone */}
                         <div className="lg:col-span-5 flex flex-col items-center lg:items-start">
                             <h2 className="bg-gradient-to-b from-[#65B4D0] to-[#959595] text-transparent bg-clip-text font-bold text-4xl md:text-5xl lg:text-[40px] mb-8 lg:mb-12 text-center lg:text-left font-manrope leading-tight lg:ml-12 xl:ml-16">
                                 Improve<br/> With Every<br/> Run
                             </h2>
+
 
                             {/* Phone */}
                             <div
@@ -206,19 +220,22 @@ const Product_page: React.FC = () => {
                                     filter: 'drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5))'
                                 }}
                             >
-                                <Image src={App1} alt="Phone mockup" fill className="object-cover rounded-[14px]"/>
+                                <Image src="/phoneproduct.png" alt="Phone mockup" fill className="object-cover rounded-[14px]"/>
                             </div>
                         </div>
 
+
                         {/* Cards */}
                         <div className="lg:col-span-7 flex flex-col justify-center gap-8 lg:gap-12 lg:-ml-32 xl:-ml-40 lg:mt-20 xl:mt-24 relative z-10">
+
 
                             {/* Analytics Card 1 */}
                             <div className="flex flex-col md:flex-row items-start gap-4 relative">
                                 {/* Connector Line*/}
                                 <div className="hidden md:block relative h-[80px] w-[120px] lg:w-[150px] xl:w-[200px] flex-shrink-0">
-                                    <Image src={Group32} alt="connector line" fill className="object-contain"/>
+                                    <Image src="/line2.png" alt="connector line" fill className="object-contain"/>
                                 </div>
+
 
                                 <div className="flex-1">
                                     {/* Label */}
@@ -226,10 +243,11 @@ const Product_page: React.FC = () => {
                                         <p className="text-[10px] md:text-xs font-medium whitespace-nowrap">LIVE TRACKING ANALYTICS</p>
                                     </div>
 
+
                                     {/* Icon + Text */}
                                     <div className="flex items-start gap-4">
                                         <div className="relative h-[50px] w-[50px] md:h-[60px] md:w-[60px] flex-shrink-0">
-                                            <Image src={Analytics} alt="analytics icon" fill className="object-contain"/>
+                                            <Image src="/AnalyticsIcon.png" alt="analytics icon" fill className="object-contain"/>
                                         </div>
                                         <p className="text-white text-sm md:text-base">
                                             Lorem ipsum dolor sit amet consectetur. Condimentum aliquam nunc vestibulum proin aliquam tellus habitasse suspendisse gravida. Metus phasellus ridiculus nisi velit libero vel id.
@@ -237,13 +255,15 @@ const Product_page: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
+
 
                             {/* Analytics Card 2 */}
                             <div className="flex flex-col md:flex-row items-start gap-4 relative md:translate-y-8">
                                 {/* Connector Line */}
                                 <div className="hidden md:block relative h-[80px] w-[120px] lg:w-[150px] xl:w-[200px] flex-shrink-0">
-                                    <Image src={Group31} alt="connector line" fill className="object-contain"/>
+                                    <Image src="/snowboardicon.png" alt="connector line" fill className="object-contain"/>
                                 </div>
+
 
                                 <div className="flex-1">
                                     {/* Label */}
@@ -251,10 +271,11 @@ const Product_page: React.FC = () => {
                                         <p className="text-[10px] md:text-xs font-medium whitespace-nowrap">LIVE TRACKING ANALYTICS</p>
                                     </div>
 
+
                                     {/* Icon + Text */}
                                     <div className="flex items-start gap-4">
                                         <div className="relative h-[50px] w-[50px] md:h-[60px] md:w-[60px] flex-shrink-0">
-                                            <Image src={Analytics} alt="analytics icon" fill className="object-contain"/>
+                                            <Image src="/snowboardicon.png" alt="analytics icon" fill className="object-contain"/>
                                         </div>
                                         <p className="text-white text-sm md:text-base">
                                             Lorem ipsum dolor sit amet consectetur. Condimentum aliquam nunc vestibulum proin aliquam tellus habitasse suspendisse gravida. Metus phasellus ridiculus nisi velit libero vel id.
@@ -263,10 +284,12 @@ const Product_page: React.FC = () => {
                                 </div>
                             </div>
 
+
                         </div>
                     </div>
                 </div>
             </div>
+
 
             {/* Panel 4*/}
             <div className="flex px-6 md:px-12 lg:px-20 py-12 md:py-20">
@@ -283,6 +306,7 @@ const Product_page: React.FC = () => {
                 </div>
             </div>
 
+
             {/* Panel 5*/}
             <div className="flex flex-col px-6 md:px-12 lg:px-20 py-12 md:py-20">
                 {/* Text */}
@@ -290,32 +314,37 @@ const Product_page: React.FC = () => {
                     {/* Left Line */}
                     <div className="flex-1 h-[5px] bg-gradient-to-l from-white to-transparent opacity-70"></div>
 
+
                     <h2 className="text-center text-[32px] md:text-[40px] text-white font-bold">
                         Testimonies
                     </h2>
+
 
                     {/* Right Line */}
                     <div className="flex-1 h-[5px] bg-gradient-to-r from-white to-transparent opacity-70"></div>
                 </div>
 
+
                 {/* Testimonial Cards */}
                 <div className="flex flex-col lg:flex-row gap-8 items-center justify-center max-w-7xl mx-auto w-full">
                     <TestimonialCard
-                        picture={testimony1}
+                        picture="/BradleyTestimonial.png"
                         quote="Snowin has changed how I ride. Can't imagine boarding without it now!"
                         name="HALEY"
                         position="MEMBER"
                     />
 
+
                     <TestimonialCard
-                        picture={testimony2}
+                        picture="/ChrisTestimmonial.png"
                         quote="Seeing each run mapped out like Strava makes it so easy to spot where I can improve."
                         name="CHRIS"
                         position="MEMBER"
                     />
 
+
                     <TestimonialCard
-                        picture={testimony3}
+                        picture="HaleyTestimonialsPanel.png"
                         quote="It's made reviewing runs faster and more precise, and my riders stay motivated chasing local leaderboard rankings."
                         name="BRADLEY"
                         position="MEMBER"
@@ -325,5 +354,3 @@ const Product_page: React.FC = () => {
         </div>
     );
 };
-
-export default Product_page;

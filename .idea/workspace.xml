@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe0e5cbf-c5b5-4425-83af-203eadcda9c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/app/product/Page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/components/ProductPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/BradleyTestimonialsPanel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/ChrisTestimonalsPanel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/HaleyTestimonialsPanel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/LynxTrustByPanel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/PrecisionPanel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/SkiHausTrustByPanel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/SmartRidePanel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/SnowBoundExpoTrustByPanel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/AnalyticsIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/line2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/mountain.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/phoneproduct.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/snowboardicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/snowboardingvideo.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/app/product/Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/app/product/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/components/ProductPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/ProductPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/BradleyTestimonialsPanel.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="product-page-London" />
+        <entry key="$PROJECT_DIR$" value="Aboutpage" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -82,23 +83,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1763334051826</updated>
-      <workItem from="1763334052891" duration="1225000" />
+      <workItem from="1763334052891" duration="3673000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/frontend/components/ProductPage.tsx</url>
-          <line>121</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
