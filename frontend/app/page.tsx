@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Carousel from '../components/Carousel';
+import "./homepage.css";
 
 type BannerOffsets = { imgY: number; textY: number };
 
@@ -55,17 +56,17 @@ export default function Page() {
       {/* SECTION 2 — Centered “Why us” */}
       <section className="section why" aria-labelledby="why-heading">
        <div className="why-wrap">
-        <h2 id="why-heading" className="why-hero">SnowIn is the all-in-one lorem ipsum</h2>
-        <p className="why-sub">Lorem ipsum dolor sit amet consectetur. Lacus et volutpat sapien mauris.</p>
+        <h2 id="why-heading" className="why-hero">Train Smarter. Ride in Flow.</h2>
+        <p className="why-sub">So you can push harder, ride smarter, and relive every line.</p>
 
        <figure className="why-figure">
         <img src="/snowboards.png" alt="Snowboards on a bench" />
        </figure>
 
        <div className="why-cols">
-        <p><strong>Track your progress.</strong> Nunc proin aliquam tellus habitasse suspendisse gravida. Metus phasellus ridiculus nisi velit libero.</p>
-        <p><strong>See your potential.</strong> Nunc proin aliquam tellus habitasse suspendisse gravida. Metus phasellus ridiculus nisi velit libero.</p>
-        <p><strong>Perform. Rinse. Repeat.</strong> Nunc proin aliquam tellus habitasse suspendisse gravida. Metus phasellus ridiculus nisi velit libero.</p>
+        <p>Sync your board to your phone and unlock performance stats, trail maps, and fall detection.</p>
+        <p>Built tough for subzero conditions, SnowIn keeps you connected from summit to base.</p>
+        <p>SnowIn keeps tabs on your board’s every move—because the best rides shouldn’t need a pause.</p>
        </div>
        </div>
       </section>
@@ -74,7 +75,7 @@ export default function Page() {
       {/* BANNER */}
       <section className="full-bleed image-banner" aria-label="Banner image" ref={bannerRef}>
         <img
-          src="https://i.pinimg.com/1200x/25/2d/9f/252d9fa45e13201c8ab2e501b9b4f22c.jpg"
+          src="/snowboarders.png" 
           alt="A biker adventure"
           className="banner-image"
           style={{ transform: `translateY(${bannerOffsets.imgY}px)` }}
@@ -83,8 +84,9 @@ export default function Page() {
           className="banner-overlay"
           style={{ transform: `translateY(${bannerOffsets.textY}px)` }}
         >
-          <h2 className="banner-text">Every Turn Tells A Story</h2>
-          <a className="button-59 banner-cta" href="#join">Join Our Community</a>
+          <h2 className="banner-text">Every Turn Tells A Story...</h2>
+          <p className="banner-caption"> Let's capture yours! </p>
+          <a className="button-59 banner-cta" href="#join">Join Us</a>
         </div>
       </section>
     </>
