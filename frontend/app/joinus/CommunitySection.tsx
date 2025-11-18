@@ -14,20 +14,22 @@ export default function CommunitySection() {
 
     return (
         <section className="bg-[#4b4b4b] text-white py-16 px-8">
-            <h1 className="text-left mb-24 font-normal tracking-tight text-8xl px-10
+            <h1 className="text-left ml-[3.5%] mb-24 font-normal tracking-tight text-8xl
                             bg-gradient-to-r from-white to-gray-800
                            bg-clip-text text-transparent">
                 Our Community
             </h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-xs sm:max-w-2xl md:max-w-5xl lg:max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-8 lg:px-16">
                 {images.map((src, index) => (
-                    <Image
-                        key={index}
-                        src={src}
-                        alt={`Community Image ${index + 1}`}
-                        className="rounded-lg object-cover w-full h-80"
-                    />
+                    <div key={index} className="aspect-[3/4] w-full rounded-lg overflow-hidden">
+                        <Image
+                            key={index}
+                            src={src}
+                            alt={`Community Image ${index + 1}`}
+                            className="object-cover w-full h-full"
+                        />
+                    </div>
                 ))}
             </div>
         </section>
