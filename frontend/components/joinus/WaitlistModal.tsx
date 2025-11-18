@@ -1,13 +1,13 @@
 "use client"
 
 import { useState } from "react";
-import {SkillLevel, useWaitlist, WaitlistForm} from "../../hooks/useWaitlist";
+import { SkillLevel, useWaitlist } from "../../hooks/useWaitlist";
 
 interface WaitlistModalProps {
     trigger?: React.ReactNode;
 }
 
-export default function WaitlistSection({ trigger }: WaitlistModalProps) {
+export default function WaitlistModal({ trigger }: WaitlistModalProps) {
     const [ open, setOpen ] = useState(false);
 
     const [ name, setName ] = useState("");
@@ -22,7 +22,6 @@ export default function WaitlistSection({ trigger }: WaitlistModalProps) {
         e.preventDefault();
         addToWaitlist({ name, email, phoneNumber, age, skillLevel });
 
-        setOpen(false);
         setName("");
         setEmail("");
         setPhoneNumber("");
@@ -32,11 +31,9 @@ export default function WaitlistSection({ trigger }: WaitlistModalProps) {
 
     return (
         <>
-            <button onClick={() => setOpen(true)}
-                    className="px-4 py-2 rounded-lg bg-white text-black font-semibold
-                             hover:bg-gray-200 transition">
-                { trigger || "Join Waitlist" }
-            </button>
+            <div onClick={() => setOpen(true)}>
+                {trigger}
+            </div>
 
              {/*  Modal Pop-Up  */}
             { open && (

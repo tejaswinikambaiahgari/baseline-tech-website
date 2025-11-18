@@ -45,7 +45,7 @@ export default function Page() {
   }, []);
 
   return (
-    <>
+   <>
       {/* HERO */}
       <section className="hero" aria-label="Hero">
         <img src="/hero-image.png" alt="Snowboarder carving down a slope" className="hero-image" />

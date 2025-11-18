@@ -13,14 +13,21 @@ export default function CommunitySection() {
     const images = [ comm1, comm2, comm3, comm4, comm5, comm6, comm7, comm8 ];
 
     return (
-        <section className="bg-[radial-gradient(circle_at_center,_#65b4d0_0%,_#232222_100%)]
-                            text-white py-16 px-8">
-            <h2 className="text-3xl font-semibold mb-10 text-center">Our Community</h2>
+        <section className="bg-[#4b4b4b] text-white py-16 px-8">
+            <h1 className="text-left mb-24 font-normal tracking-tight text-8xl px-10
+                            bg-gradient-to-r from-white to-gray-800
+                           bg-clip-text text-transparent">
+                Our Community
+            </h1>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-xs sm:max-w-2xl md:max-w-5xl lg:max-w-7xl mx-auto">
                 {images.map((src, index) => (
-                    <Image key={index} src={src} alt={`Community Image ${index + 1}`}
-                         className="rounded-lg object-cover w-full h-60"/>
+                    <Image
+                        key={index}
+                        src={src}
+                        alt={`Community Image ${index + 1}`}
+                        className="rounded-lg object-cover w-full h-80"
+                    />
                 ))}
             </div>
         </section>

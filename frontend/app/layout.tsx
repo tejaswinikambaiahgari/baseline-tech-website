@@ -5,7 +5,6 @@ import type { ReactNode } from "react";
 import { Providers } from "./providers";
 import { Geist, Geist_Mono, Solway, Sedgwick_Ave_Display, Epilogue, Manrope, Kantumruy_Pro } from "next/font/google";
 
-
 const geistSans  = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono  = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 const solway     = Solway({ variable: "--font-solway", weight: "700", subsets: ["latin"] });

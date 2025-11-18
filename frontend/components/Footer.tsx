@@ -49,7 +49,7 @@ function IconLinkedIn(props: React.SVGProps<SVGSVGElement>) {
 
 export default function Footer() {
   return (
-    <footer className="w-full mt-24 bg-[#4b4b4b] text-white font-sans">
+    <footer className="w-full bg-[#4b4b4b] text-white font-sans">
       <div className="mx-auto w-full max-w-7xl px-6 py-8">
         {/* top grid */}
         <div className="grid md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10 md:gap-14 lg:gap-20">
