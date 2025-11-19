@@ -13,19 +13,19 @@ export default function WaitlistModal({ trigger }: WaitlistModalProps) {
     const [ name, setName ] = useState("");
     const [ email, setEmail ] = useState("");
     const [ phoneNumber, setPhoneNumber ] = useState("");
-    const [ age, setAge ] = useState(18);
+    const [ age, setAge ] = useState("18");
     const [ skillLevel, setSkillLevel ] = useState<SkillLevel>("Complete Beginner");
 
     const { addToWaitlist, isLoading } = useWaitlist()
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        addToWaitlist({ name, email, phoneNumber, age, skillLevel });
+        addToWaitlist({ name, email, phoneNumber, age: Number(age), skillLevel });
 
         setName("");
         setEmail("");
         setPhoneNumber("");
-        setAge(18);
+        setAge("");
         setSkillLevel("Complete Beginner");
 
         setOpen(false);
@@ -110,16 +110,28 @@ export default function WaitlistModal({ trigger }: WaitlistModalProps) {
                                            }}
                                     />
 
-                                    <input type="number"
+                                    <input type="text"
+                                           inputMode="numeric"
                                            placeholder="Age"
+                                           pattern="[0-9]*"
                                            className="w-full px-5 py-3 rounded-full
                                                       bg-white/10 border border-white/30 text-white
                                                       placeholder-white/60 outline-none
                                                       focus:border-white/60 backdrop-blur-lg
                                                       transition"
                                            value={age}
-                                           onChange={(e) => setAge(parseInt(e.target.value))}
-                                           min={1}
+                                           onChange={(e) => {
+                                               const value = e.target.value
+                                               if (value === "") {
+                                                   setAge("");
+                                                   return;
+                                               }
+
+                                               // Restricted to Digits.
+                                               if (/^\d+$/.test(value)) {
+                                                   setAge(value);
+                                               }
+                                           }}
                                            required
                                     />
 
