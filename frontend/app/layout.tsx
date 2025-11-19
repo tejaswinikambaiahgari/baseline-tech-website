@@ -1,6 +1,5 @@
 import "./globals.css";
 import NavBar from "../components/NavBar";
-
 import {
     Geist,
     Geist_Mono,
@@ -10,6 +9,7 @@ import {
     Manrope
 } from "next/font/google";
 import type { ReactNode } from "react";
+import Footer from "../components/Footer";
 
 const geistSans  = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono  = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -25,6 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
                         ${manrope.variable}`}>
         <NavBar />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
