@@ -27,6 +27,8 @@ export default function WaitlistModal({ trigger }: WaitlistModalProps) {
         setPhoneNumber("");
         setAge(18);
         setSkillLevel("Complete Beginner");
+
+        setOpen(false);
     }
 
     return (
@@ -37,71 +39,166 @@ export default function WaitlistModal({ trigger }: WaitlistModalProps) {
 
              {/*  Modal Pop-Up  */}
             { open && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex
+                <div className="fixed inset-0 bg-black/20 backdrop-blur-md flex
                                 justify-center items-center z-50"
                      onClick={() => setOpen(false)}>
                     {/* Modal */}
-                    <div className="bg-white text-black p-6 rounded-lg w-full max-w-md relative shadow-xl"
+                    <div className="relative w-[85%] h-[85%] mx-auto px-10 py-12 rounded-3xl
+                                    border border-white/40 bg-white/5 backdrop-blur-xl
+                                    shadow-[0_4px_40px_rgba(0,0,0,0.35)]"
                          onClick={(e) => e.stopPropagation()}>
                         {/* Close Button */}
                         <button onClick={() => setOpen(false)}
-                                className="absolute top-3 right-3 text-gray-500 hover:text-black
-                                           text-lg">
+                                className="absolute top-4 right-4 text-white/70 hover:text-white
+                                           text-3xl">
                             ✕
                         </button>
 
-                        <h2 className="text-2xl font-bold mb-2">Join The Waitlist</h2>
-                        <p className="text-gray-700 mb-4">
-                            Be the first to hear about updates and exclusives.
-                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-[10%]">
+                            <div className="mt-0 md:mt-[20%]">
+                                <h1 className="text-3xl md:text-7xl font-bold mb-3 md:mb-6">Join The Waitlist</h1>
+                                <p className="md:mb-8 text-md md:text-2xl font-bold max-w-lg">
+                                    Be the first to learn more about Flowmersion’s products and
+                                    gain access to exclusive deals and info.
+                                </p>
+                            </div>
 
-                        <form onSubmit={handleSubmit} className="space-y-4">
-                            <input type="text"
-                                   placeholder="Full Name"
-                                   className="w-full p-3 border rounded-md"
-                                   value={name}
-                                   onChange={(e) => setName(e.target.value)}
-                                   required
-                            />
+                            <div>
+                                <form onSubmit={handleSubmit} className="space-y-5">
+                                    <input type="text"
+                                           placeholder="Full Name"
+                                           className="w-full px-5 py-3 rounded-full
+                                                      bg-white/10 border border-white/30 text-white
+                                                      placeholder-white/60 outline-none
+                                                      focus:border-white/60 backdrop-blur-lg
+                                                      transition"
+                                           value={name}
+                                           onChange={(e) => {
+                                               const value = e.target.value;
+                                               if (/^[A-Za-z\s]*$/.test(value)) {
+                                                   setName(value)
+                                               }
+                                           }}
+                                           required
+                                    />
 
-                            <input type="email"
-                                   placeholder="Email"
-                                   className="w-full p-3 border rounded-md"
-                                   value={email}
-                                   onChange={(e) => setEmail(e.target.value)}
-                                   required
-                            />
+                                    <input type="email"
+                                           placeholder="Email"
+                                           className="w-full px-5 py-3 rounded-full
+                                                      bg-white/10 border border-white/30 text-white
+                                                      placeholder-white/60 outline-none
+                                                      focus:border-white/60 backdrop-blur-lg
+                                                      transition"
+                                           value={email}
+                                           onChange={(e) => setEmail(e.target.value)}
+                                           required
+                                    />
 
-                            <input type="tel"
-                                   placeholder="Phone Number (Optional)"
-                                   className="w-full p-3 border rounded-md"
-                                   value={phoneNumber}
-                                   onChange={(e) => setPhoneNumber(e.target.value)}
-                            />
+                                    <input type="tel"
+                                           placeholder="Phone Number (Optional)"
+                                           className="w-full px-5 py-3 rounded-full
+                                                      bg-white/10 border border-white/30 text-white
+                                                      placeholder-white/60 outline-none
+                                                      focus:border-white/60 backdrop-blur-lg
+                                                      transition"
+                                           value={phoneNumber}
+                                           onChange={(e) => {
+                                               const value = e.target.value;
+                                               if (/^[0-9+\-\s()]*$/.test(value)) {
+                                                   setPhoneNumber(value)
+                                               }
+                                           }}
+                                    />
 
-                            <input type="number"
-                                   placeholder="Age"
-                                   className="w-full p-3 border rounded-md"
-                                   value={age}
-                                   onChange={(e) => setAge(parseInt(e.target.value))}
-                                   required
-                            />
+                                    <input type="number"
+                                           placeholder="Age"
+                                           className="w-full px-5 py-3 rounded-full
+                                                      bg-white/10 border border-white/30 text-white
+                                                      placeholder-white/60 outline-none
+                                                      focus:border-white/60 backdrop-blur-lg
+                                                      transition"
+                                           value={age}
+                                           onChange={(e) => setAge(parseInt(e.target.value))}
+                                           min={1}
+                                           required
+                                    />
 
-                            <select className="w-full p-3 border rounded-md"
-                                    value={skillLevel}
-                                    onChange={(e) => setSkillLevel(e.target.value as SkillLevel)}>
-                                <option value="Complete Beginner">Complete Beginner</option>
-                                <option value="Beginner">Beginner</option>
-                                <option value="Intermediate">Intermediate</option>
-                                <option value="Advanced">Advanced</option>
-                            </select>
+                                    <div className="space-y-3">
+                                        <p className="text-white font-medium">
+                                            What is your skiing/snowboarding skill level?
+                                        </p>
 
-                            <button type="submit"
-                                    className="w-full p-3 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-                                    disabled={isLoading}>
-                                { isLoading ? "Joining..." : "Join Waitlist" }
-                            </button>
-                        </form>
+                                        <label className="flex items-start gap-3 text-white/90
+                                                          cursor-pointer">
+                                            <input type="radio"
+                                                   name="skill"
+                                                   value="Complete Beginner"
+                                                   checked={skillLevel === "Complete Beginner"}
+                                                   onChange={() => setSkillLevel("Complete Beginner")}
+                                                   className="mt-1 h-4 w-4 accent-white"
+                                            />
+                                            <span className="leading-snug">
+                                                Complete Beginner (never been on a slope but would
+                                                like to learn)
+                                            </span>
+                                        </label>
+
+                                        <label className="flex items-start gap-3 text-white/90
+                                                          cursor-pointer">
+                                            <input type="radio"
+                                                   name="skill"
+                                                   value="Beginner"
+                                                   checked={skillLevel === "Beginner"}
+                                                   onChange={() => setSkillLevel("Beginner")}
+                                                   className="mt-1 h-4 w-4 accent-white"
+                                            />
+                                            <span className="leading-snug">
+                                                Beginner (I mostly hangout on Green Slopes)
+                                            </span>
+                                        </label>
+
+                                        <label className="flex items-start gap-3 text-white/90
+                                                          cursor-pointer">
+                                            <input type="radio"
+                                                   name="skill"
+                                                   value="Intermediate"
+                                                   checked={skillLevel === "Intermediate"}
+                                                   onChange={() => setSkillLevel("Intermediate")}
+                                                   className="mt-1 h-4 w-4 accent-white"
+                                            />
+                                            <span className="leading-snug">
+                                                Intermediate (Blue and Chill Black Diamonds are my
+                                                jam)
+                                            </span>
+                                        </label>
+
+                                        <label className="flex items-start gap-3 text-white/90
+                                                          cursor-pointer">
+                                            <input type="radio"
+                                                   name="skill"
+                                                   value="Advanced"
+                                                   checked={skillLevel === "Advanced"}
+                                                   onChange={() => setSkillLevel("Advanced")}
+                                                   className="mt-1 h-4 w-4 accent-white"
+                                            />
+                                            <span className="leading-snug">
+                                                Advanced (I can take on any type of terrain, speed
+                                                is my friend)
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <button type="submit"
+                                            className="px-6 py-3 text-lg rounded-xl
+                                                       backdrop-blur-sm border-2 border-white
+                                                       hover:bg-gray-300 hover:text-gray-800
+                                                       font-black transition"
+                                            disabled={isLoading}>
+                                        { isLoading ? "Submitting..." : "SUBMIT" }
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}
