@@ -8,16 +8,24 @@ import cors from "cors";
 
 
 // supabase and express setup
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 const app = express();
 const corsOption = {
     origin:["http://localhost:5173"],
 }; app.use(cors(corsOption));
 app.use(express.json());
 
+// -- test route ---
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.path}`);
+    next();
+});
+
 // --- waitlist route --- 
 app.post("/api/waitlist", async (req, res) => {
-    const {name, email, age, snow_sport_level }  = req.body;
+    console.log("Received body:", req.body);
+    const {name, email, age, snow_sport_level, phone_number}  = req.body;
+    
 
     // check if name is valid 
     if (!name) {
@@ -31,10 +39,13 @@ app.post("/api/waitlist", async (req, res) => {
 
 
      // check if snow_sport_level is valid 
+    const valid_snow_levels = ["Complete Beginner", "Beginner", "Intermediate", "Advanced"];
 
-    const valid_snow_levels = ["Complete Beginner", 'Beginner', "Intermediate", "Advanced"];
-   
-    if (!snow_sport_level.includes(valid_snow_levels)){
+    console.log("Received body:", req.body);
+    console.log("snow_sport_level value:", snow_sport_level);
+    console.log("snow_sport_level type:", typeof snow_sport_level);
+
+    if (!valid_snow_levels.includes(snow_sport_level)){
         return res.status(400).json({error: "Bad request, invalid snow sport level selected."})
     }
 
@@ -70,13 +81,32 @@ app.post("/api/waitlist", async (req, res) => {
     try {
         const {data, error: insertError} = await supabase
         .from('waitlist')
-        .insert([{email, name, age, snow_sport_level}])
+        .insert([{email, name, age, snow_sport_level, phone_number}])
         .select('id, created_at');
 
         if (insertError) {
             console.error("Supabase insert error:", insertError);
             return res.status(500).json({ error: insertError.message, details: insertError });
         }
+        try {
+            const mailerLiteReponse = await fetch('https://cryuatvezcbzckwcipza.supabase.co/functions/v1/mailerlite-integration/add-subscriber', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${process.env.SUPABASE_KEY}`,
+                'x-function-secret': process.env.WEBHOOK_SECRET,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({email})
+        });
+
+        if (!mailerLiteReponse.ok) {
+            console.error("Failed to sync to mailerLite", await mailerLiteReponse.text());
+
+        } 
+    } catch (mailerLiteError) {
+        console.error("MailerLite Error", mailerLiteError);
+    }
+
 
         return res.status(201).json({
             success: true,
@@ -84,11 +114,12 @@ app.post("/api/waitlist", async (req, res) => {
             created_at: data?.[0]?.created_at,
             name: data?.[0].name,
             age: data?.[0]?.age, 
+            phone_number: data?.[0]?.phone_number,
             snow_sport_level: data?.[0]?.snow_sport_level,
             });
     
-    }
-    catch (error) {
+    
+        } catch (error) {
         console.log("Error adding email.", error)
         res.status(400).json({error: "Something went wrong.", error});
     }
