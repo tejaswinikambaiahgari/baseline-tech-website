@@ -14,6 +14,8 @@ export default function NavBar() {
         setSymbol("☰")
     }
 
+    {/* Notice how some features will have "sm:", "md:" and "lg:" These change the NavBar such it
+     presents differently for mobile, small, medium and large-screens respectively. */}
     return (
         <nav className="w-full h-[15vh] backdrop-blur-sm fixed top-0 left-0 z-50">
             <div className="w-full h-full px-10 flex justify-between items-center">
