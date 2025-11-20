@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import {WaitlistForm} from "../../hooks/useWaitlist";
 
 const apiClient = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5173',
+    baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080',
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json',

@@ -25,7 +25,7 @@ export default function WaitlistModal({ trigger }: WaitlistModalProps) {
         setName("");
         setEmail("");
         setPhoneNumber("");
-        setAge("");
+        setAge("18");
         setSkillLevel("Complete Beginner");
 
         setOpen(false);
