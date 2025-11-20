@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { SkillLevel, useWaitlist } from "../../hooks/useWaitlist";
 
 interface WaitlistModalProps {
@@ -17,6 +17,17 @@ export default function WaitlistModal({ trigger }: WaitlistModalProps) {
     const [ skillLevel, setSkillLevel ] = useState<SkillLevel>("Complete Beginner");
 
     const { addToWaitlist, isLoading } = useWaitlist()
+
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        if (open) {
+            // Allow the DOM to paint once before applying the fade-in
+            setTimeout(() => setVisible(true), 100);
+        } else {
+            setVisible(false);
+        }
+    }, [open]);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -55,7 +66,10 @@ export default function WaitlistModal({ trigger }: WaitlistModalProps) {
                         </button>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-[10%]">
-                            <div className="mt-0 md:mt-[20%]">
+                            <div className={`mt-0 md:mt-[20%] transition-all duration-500 ease-out 
+                                             ${ visible ?
+                                                "opacity-100 translate-y-0" :
+                                                "opacity-0 -translate-y-5" }`}>
                                 <h1 className="text-3xl md:text-7xl font-bold mb-3 md:mb-6">Join The Waitlist</h1>
                                 <p className="md:mb-8 text-md md:text-2xl font-bold max-w-lg">
                                     Be the first to learn more about Flowmersion’s products and
@@ -63,7 +77,10 @@ export default function WaitlistModal({ trigger }: WaitlistModalProps) {
                                 </p>
                             </div>
 
-                            <div>
+                            <div className={`transition-all duration-500 ease-out 
+                                             ${ visible ? 
+                                                "opacity-100 translate-y-0" : 
+                                                "opacity-0 -translate-y-5" }`}>
                                 <form onSubmit={handleSubmit} className="space-y-5">
                                     <input type="text"
                                            placeholder="Full Name"
