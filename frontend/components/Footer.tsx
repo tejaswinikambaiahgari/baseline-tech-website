@@ -6,29 +6,12 @@ import Link from "next/link";
 const year = new Date().getFullYear();
 
 const navLinks = [
-  { href: "/", label: "Snowin" },
-  { href: "/simulator", label: "Simulator" },
-  { href: "/product", label: "Product" },
+  { href: "/smartride", label: "SmartRide" },
+  { href: "/upcoming", label: "Upcoming" },
   { href: "/community", label: "Community" },
+  { href: "/about", label: "About" },
 ];
 
-// icons
-function IconInstagram(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" />
-      <circle cx="12" cy="12" r="4.5" stroke="currentColor" />
-      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
-    </svg>
-  );
-}
-function IconX(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path d="M4 4l16 16M20 4L4 20" stroke="currentColor" strokeWidth="2" />
-    </svg>
-  );
-}
 function IconYouTube(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
@@ -49,31 +32,28 @@ function IconLinkedIn(props: React.SVGProps<SVGSVGElement>) {
 
 export default function Footer() {
   return (
-    <footer className="w-full mt-24 bg-[#4b4b4b] text-white font-sans">
-      <div className="mx-auto w-full max-w-7xl px-6 py-8">
+    <footer className="w-full mt-0 bg-[#2f2f30] text-white font-sans">
+      <div className="mx-auto w-full max-w-7xl px-6 py-10">
         {/* top grid */}
-        <div className="grid md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10 md:gap-14 lg:gap-20">
-          {/* BRAND COLUMN (wrap everything in one container) */}
+        <div className="grid gap-10 md:gap-14 lg:gap-20 md:grid-cols-[2fr_1fr_1fr]">
+          {/* LEFT: brand + mission + socials */}
           <div>
-          <div className="flex items-center gap-0">
-          <Image
-            src="/flowmersion-logo.png"
-            alt="Flowmersion"
-            width={1200}
-            height={240}                   
-            priority
-            className="block w-auto h-[55px]"              
-        />
+            <div className="flex items-center">
+              <Image
+                src="/flowmersion-logo.png"
+                alt="Flowmersion"
+                width={1000}
+                height={200}
+                priority
+                className="block w-auto h-[72px]"
+              />
             </div>
 
-            {/* social icons */}
+            <p className="mt-6 text-white/85 text-lg leading-snug max-w-2xl">
+              On a mission to make mountain sports safe, smart and accessible.
+            </p>
+
             <div className="mt-6 flex items-center gap-4">
-              <Link aria-label="Instagram" href="#" className="text-white hover:text-white/80">
-                <IconInstagram className="h-6 w-6" />
-              </Link>
-              <Link aria-label="X (Twitter)" href="#" className="text-white hover:text-white/80">
-                <IconX className="h-6 w-6" />
-              </Link>
               <Link aria-label="YouTube" href="#" className="text-white hover:text-white/80">
                 <IconYouTube className="h-6 w-6" />
               </Link>
@@ -83,38 +63,30 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* LINKS COLUMN (pushed right with padding) */}
-          <div className="md:pl-16 lg:pl-24">
-            <ul className="space-y-3 text-white">
-              {navLinks.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-white hover:text-white/80 visited:text-white active:text-white"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* MIDDLE: links */}
+        <div className="ml-16 md:ml-24">
+        <ul className="space-y-3 text-white">
+            {navLinks.map((l) => (
+            <li key={l.href}>
+                <Link
+                href={l.href}
+                className="text-white hover:text-white/80 visited:text-white active:text-white"
+                >
+                {l.label}
+                </Link>
+            </li>
+            ))}
+        </ul>
+        </div>
 
-          {/* ADDRESS COLUMN */}
-          <div>
-            <h3 className="mb-4 text-lg font-medium text-white">Address</h3>
-            <address className="not-italic text-white/80">
-              123 Street Boston, MA 12345
-            </address>
-          </div>
-
-          {/* CONTACT COLUMN */}
+          {/* RIGHT: contact */}
           <div>
             <h3 className="mb-4 text-lg font-medium text-white">Contact</h3>
             <div className="space-y-1">
               <p className="text-white">Naman Gupta, Co-Founder</p>
               <a
                 href="mailto:naman.eidar@gmail.com"
-                className="text-white hover:text-white/80 visited:text-white active:text-white"
+                className="text-white hover:text-white/80 visited:text-white active:text-white break-all"
               >
                 naman.eidar@gmail.com
               </a>

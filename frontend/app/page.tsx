@@ -6,6 +6,30 @@ import "./homepage.css";
 type BannerOffsets = { imgY: number; textY: number };
 
 export default function Page() {
+  // ----- HERO REVEAL -----
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [reveal, setReveal] = useState(false);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const onEnded = () => {
+      setReveal(true);
+      try { v.pause(); } catch {}
+    };
+
+    // Fallback: if ended isn't fired (autoplay blocked/short clip), reveal anyway
+    const fallback = window.setTimeout(() => setReveal(true), 9000);
+
+    v.addEventListener('ended', onEnded);
+    return () => {
+      v.removeEventListener('ended', onEnded);
+      clearTimeout(fallback);
+    };
+  }, []);
+
+  // ----- BANNER PARALLAX -----
   const bannerRef = useRef<HTMLElement | null>(null);
   const [bannerOffsets, setBannerOffsets] = useState<BannerOffsets>({ imgY: 0, textY: 0 });
 
@@ -19,7 +43,7 @@ export default function Page() {
     const onScroll = () => {
       if (raf !== null) return;
       raf = window.requestAnimationFrame(() => {
-        const y = window.scrollY; 
+        const y = window.scrollY;
         document.documentElement.style.setProperty('--px', `${y * 0.25}px`);
 
         const section = bannerRef.current;
@@ -31,7 +55,6 @@ export default function Page() {
           const textY = local * -0.10;
           setBannerOffsets({ imgY, textY });
         }
-
         raf = null;
       });
     };
@@ -47,35 +70,77 @@ export default function Page() {
   return (
     <>
       {/* HERO */}
-      <section className="hero" aria-label="Hero">
-        <img src="/hero-image.png" alt="Snowboarder carving down a slope" className="hero-image" />
+      <section className={`hero ${reveal ? 'hero--reveal' : ''}`} aria-label="Hero">
+        <video
+          ref={videoRef}
+          className="hero-video"
+          autoPlay
+          muted
+          playsInline
+          preload="metadata"
+          // no loop: we only want one playthrough
+          poster="/hero-poster.jpg"
+        >
+          <source src="/intro-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Dimmer that fades in after video ends */}
+        <div className="hero-dimmer" />
+
+        {/* Content that fades/slides in after video ends */}
+        <div className="hero-content">
+          <h1 className="hero-title">
+            The motion tech that<br />levels up your ride.
+          </h1>
+          <p className="hero-sub">
+            Flowmersion captures how you move, turning motion into insight and insight into flow.
+          </p>
+          <a href="#join" className="button-59 banner-cta hero-cta">Join Now</a>
+        </div>
       </section>
 
       <Carousel />
 
       {/* SECTION 2 — Centered “Why us” */}
       <section className="section why" aria-labelledby="why-heading">
-       <div className="why-wrap">
-        <h2 id="why-heading" className="why-hero">Train Smarter. Ride in Flow.</h2>
-        <p className="why-sub">So you can push harder, ride smarter, and relive every line.</p>
+        <div className="why-wrap">
+          <h2 id="why-heading" className="why-hero">Train Smarter. Ride in Flow.</h2>
+          <p className="why-sub">So you can push harder, ride smarter, and relive every line.</p>
 
-       <figure className="why-figure">
-        <img src="/snowboards.png" alt="Snowboards on a bench" />
-       </figure>
+          <figure className="why-figure">
+            <img src="/happy-snowboarders.png" alt="Three snowboarders smiling with their hands raised up." />
+          </figure>
 
-       <div className="why-cols">
-        <p>Sync your board to your phone and unlock performance stats, trail maps, and fall detection.</p>
-        <p>Built tough for subzero conditions, SnowIn keeps you connected from summit to base.</p>
-        <p>SnowIn keeps tabs on your board’s every move—because the best rides shouldn’t need a pause.</p>
-       </div>
-       </div>
+          <div className="why-cols why-cols--aud">
+          <div className="why-card">
+            <h3 className="why-col-title">For Parents</h3>
+            <p className="why-col-body">
+              Track your child’s location, progress, and safety — peace of mind on slopes.
+            </p>
+          </div>
+
+          <div className="why-card">
+            <h3 className="why-col-title">For Resorts</h3>
+            <p className="why-col-body">
+              Host competitions, track riders, and engage guests with real-time data and leaderboards.
+            </p>
+          </div>
+
+          <div className="why-card">
+            <h3 className="why-col-title">For Riders</h3>
+            <p className="why-col-body">
+              Visualize your ride, relive every run, and compete with friends — because progress should feel fun.
+            </p>
+          </div>
+        </div>
+        </div>
       </section>
-
 
       {/* BANNER */}
       <section className="full-bleed image-banner" aria-label="Banner image" ref={bannerRef}>
         <img
-          src="/snowboarders.png" 
+          src="/snowboarders.png"
           alt="A biker adventure"
           className="banner-image"
           style={{ transform: `translateY(${bannerOffsets.imgY}px)` }}
