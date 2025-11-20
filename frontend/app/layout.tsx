@@ -1,9 +1,17 @@
 import "./globals.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import type { ReactNode } from "react";
 import { Providers } from "./providers";
-import { Geist, Geist_Mono, Solway, Sedgwick_Ave_Display, Epilogue, Manrope, Kantumruy_Pro } from "next/font/google";
+import {
+    Geist,
+    Geist_Mono,
+    Solway,
+    Kantumruy_Pro,
+    Sedgwick_Ave_Display,
+    Manrope,
+    Epilogue
+} from "next/font/google";
+import type { ReactNode } from "react";
 
 const geistSans  = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono  = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
