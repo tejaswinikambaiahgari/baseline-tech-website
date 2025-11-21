@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/flowmersion-logo.png"
-import AboutUs from "./AboutUs";
+import {useState} from "react";
 
 export default function NavBar() {
     return (
