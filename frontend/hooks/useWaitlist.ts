@@ -6,7 +6,7 @@ export type SkillLevel = "Complete Beginner" | "Beginner" | "Intermediate" | "Ad
 export interface WaitlistForm {
     name: string;
     email: string;
-    phoneNumber?: string;
+    phoneNumber: string;
     age: number;
     skillLevel: SkillLevel;
 }
