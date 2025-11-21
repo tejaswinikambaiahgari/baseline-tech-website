@@ -1,16 +1,18 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../public/flowmersion-logo.png"
+import logo from "../public/flowmersion_logo.png"
 import {useState} from "react";
 
 export default function NavBar() {
     const [open, setOpen] = useState(false);
     const [ symbol, setSymbol ] = useState("☰");
+
     function closeTheBurger() {
         setOpen(false);
         setSymbol("☰")
     }
+
     {/* Notice how some features will have "sm:", "md:" and "lg:" These change the NavBar such it
      presents differently for mobile, small, medium and large-screens respectively. */}
     return (
@@ -20,25 +22,30 @@ export default function NavBar() {
                     <Image src={logo} alt="Logo" width={400}
                            height={400} className="cursor-pointer" priority/>
                 </Link>
+
                 <div className="hidden md:flex items-center sm:space-x-4 md:text-xl lg:text-2xl md:space-x-8 lg:space-x-16
                                 [font-family:var(--font-manrope)] sm:pr-6 md:pr-8 lg:pr-10">
                     <Link href="/product"
                           className="text-white hover:text-gray-300 transition-colors duration-200">
                         SmartRide
                     </Link>
+
                     <Link href="/simulator"
                           className="text-white hover:text-gray-300 transition-colors duration-200">
                         Upcoming
                     </Link>
+
                     <Link href="/joinus"
                           className="text-white hover:text-gray-300 transition-colors duration-200">
                         Community
                     </Link>
+
                     <Link href="/about"
                           className="text-white hover:text-gray-300 transition-colors duration-200">
                         About
                     </Link>
                 </div>
+
                 <button className="md:hidden bg-transparent backdrop-blur-sm text-3xl"
                         onClick={() => {
                             setOpen(!open);
@@ -47,6 +54,7 @@ export default function NavBar() {
                     { symbol }
                 </button>
             </div>
+
             {open && (
                 <div className="md:hidden
                         w-[20vw]
@@ -59,6 +67,7 @@ export default function NavBar() {
                         text-lg
                         [font-family:var(--font-manrope)]
                         transition-all duration-300">
+
                     <Link href="/product" onClick={() => closeTheBurger()} className="text-white hover:text-gray-300 transition-colors duration-200">SmartRide</Link>
                     <Link href="/simulator" onClick={() => closeTheBurger()} className="text-white hover:text-gray-300 transition-colors duration-200">Upcoming</Link>
                     <Link href="/joinus" onClick={() => closeTheBurger()} className="text-white hover:text-gray-300 transition-colors duration-200">Community</Link>
