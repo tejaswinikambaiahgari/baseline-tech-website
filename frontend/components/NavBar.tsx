@@ -26,22 +26,22 @@ export default function NavBar() {
 
                 <div className="hidden md:flex items-center sm:space-x-4 md:text-xl lg:text-2xl md:space-x-8 lg:space-x-16
                                 [font-family:var(--font-manrope)] sm:pr-6 md:pr-8 lg:pr-10">
-                    <Link href="/product"
+                    <Link href="/smartride" // previously, product.
                           className="text-white hover:text-gray-300 transition-colors duration-200">
                         SmartRide
                     </Link>
 
-                    <Link href="/simulator"
+                    <Link href="/upcoming" // previously, simulator.
                           className="text-white hover:text-gray-300 transition-colors duration-200">
                         Upcoming
                     </Link>
 
-                    <Link href="/joinus"
+                    <Link href="/community" // previously, community.
                           className="text-white hover:text-gray-300 transition-colors duration-200">
                         Community
                     </Link>
 
-                    <Link href="/about"
+                    <Link href="/about" // previously, about.
                           className="text-white hover:text-gray-300 transition-colors duration-200">
                         About
                     </Link>
@@ -69,9 +69,9 @@ export default function NavBar() {
                         [font-family:var(--font-manrope)]
                         transition-all duration-300">
 
-                    <Link href="/product" onClick={() => closeTheBurger()} className="text-white hover:text-gray-300 transition-colors duration-200">SmartRide</Link>
-                    <Link href="/simulator" onClick={() => closeTheBurger()} className="text-white hover:text-gray-300 transition-colors duration-200">Upcoming</Link>
-                    <Link href="/joinus" onClick={() => closeTheBurger()} className="text-white hover:text-gray-300 transition-colors duration-200">Community</Link>
+                    <Link href="/smartride" onClick={() => closeTheBurger()} className="text-white hover:text-gray-300 transition-colors duration-200">SmartRide</Link>
+                    <Link href="/upcoming" onClick={() => closeTheBurger()} className="text-white hover:text-gray-300 transition-colors duration-200">Upcoming</Link>
+                    <Link href="/community" onClick={() => closeTheBurger()} className="text-white hover:text-gray-300 transition-colors duration-200">Community</Link>
                     <Link href="/about" onClick={() => closeTheBurger()} className="text-white hover:text-gray-300 transition-colors duration-200">About</Link>
                 </div>
             )}

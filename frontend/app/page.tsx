@@ -68,7 +68,7 @@ export default function Page() {
   }, []);
 
   return (
-    <>
+   <>
       {/* HERO */}
       <section className={`hero ${reveal ? 'hero--reveal' : ''}`} aria-label="Hero">
         <video

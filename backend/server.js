@@ -11,7 +11,7 @@ import cors from "cors";
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 const app = express();
 const corsOption = {
-    origin:["http://localhost:5173"],
+    origin:["http://localhost:3000"],
 }; app.use(cors(corsOption));
 app.use(express.json());
 
@@ -21,11 +21,10 @@ app.use((req, res, next) => {
     next();
 });
 
-// --- waitlist route --- 
+// --- waitlist route ---
 app.post("/api/waitlist", async (req, res) => {
     console.log("Received body:", req.body);
-    const {name, email, age, snow_sport_level, phone_number}  = req.body;
-    
+    const {name, email, phoneNumber, age, skillLevel}  = req.body;
 
     // check if name is valid 
     if (!name) {
@@ -38,14 +37,14 @@ app.post("/api/waitlist", async (req, res) => {
     }
 
 
-     // check if snow_sport_level is valid 
+     // check if skillLevel is valid
     const valid_snow_levels = ["Complete Beginner", "Beginner", "Intermediate", "Advanced"];
 
     console.log("Received body:", req.body);
-    console.log("snow_sport_level value:", snow_sport_level);
-    console.log("snow_sport_level type:", typeof snow_sport_level);
+    console.log("skillLevel value:", skillLevel);
+    console.log("skillLevel type:", typeof skillLevel);
 
-    if (!valid_snow_levels.includes(snow_sport_level)){
+    if (!valid_snow_levels.includes(skillLevel)){
         return res.status(400).json({error: "Bad request, invalid snow sport level selected."})
     }
 
@@ -81,7 +80,7 @@ app.post("/api/waitlist", async (req, res) => {
     try {
         const {data, error: insertError} = await supabase
         .from('waitlist')
-        .insert([{email, name, age, snow_sport_level, phone_number}])
+        .insert([{email, name, age, snow_sport_level: skillLevel, phone_number: phoneNumber}])
         .select('id, created_at');
 
         if (insertError) {
@@ -102,7 +101,7 @@ app.post("/api/waitlist", async (req, res) => {
         if (!mailerLiteReponse.ok) {
             console.error("Failed to sync to mailerLite", await mailerLiteReponse.text());
 
-        } 
+        }
     } catch (mailerLiteError) {
         console.error("MailerLite Error", mailerLiteError);
     }
@@ -118,7 +117,7 @@ app.post("/api/waitlist", async (req, res) => {
             snow_sport_level: data?.[0]?.snow_sport_level,
             });
     
-    
+
         } catch (error) {
         console.log("Error adding email.", error)
         res.status(400).json({error: "Something went wrong.", error});
