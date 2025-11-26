@@ -54,9 +54,10 @@ export default function WaitlistModal({ trigger }: WaitlistModalProps) {
                                 justify-center items-center z-50"
                      onClick={() => setOpen(false)}>
                     {/* Modal */}
-                    <div className="relative w-[85%] h-[85%] mx-auto px-10 py-12 rounded-3xl
+                    <div className="relative w-[85%] max-w-5xl mx-auto px-10 py-12 rounded-3xl
                                     border border-white/40 bg-white/5 backdrop-blur-xl
-                                    shadow-[0_4px_40px_rgba(0,0,0,0.35)]"
+                                    shadow-[0_4px_40px_rgba(0,0,0,0.35)]
+                                    min-h-[70vh] max-h-[90vh] overflow-y-auto"
                          onClick={(e) => e.stopPropagation()}>
                         {/* Close Button */}
                         <button onClick={() => setOpen(false)}
@@ -65,7 +66,7 @@ export default function WaitlistModal({ trigger }: WaitlistModalProps) {
                             ✕
                         </button>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-[10%]">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-4 md:mt-6">
                             <div className={`mt-0 md:mt-[20%] transition-all duration-500 ease-out 
                                              ${ visible ?
                                                 "opacity-100 translate-y-0" :

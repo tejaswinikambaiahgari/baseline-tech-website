@@ -69,7 +69,7 @@ export default function Carousel() {
                   ))}
                 </h3>
                 <p className="slide-body">{s.body}</p>
-                <a className="button-59 banner-cta" href="#learn-more">{s.cta}</a>
+                <a className="button-59 banner-cta" href="/smartride">{s.cta}</a>
               </div>
 
               <figure className={`slide-asset ${s.img === '/drone.png' ? 'is-drone' : ''}`}>
