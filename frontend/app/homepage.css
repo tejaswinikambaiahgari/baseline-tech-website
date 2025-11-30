@@ -465,22 +465,25 @@
     box-shadow:none; 
   }
   
-  .dots{ 
-    position:absolute; 
-    bottom:clamp(14px,3vh,28px); 
-    left:50%; 
-    transform: translateX(-50%); 
-    z-index:2; 
-    display:flex; 
-    gap:10px; 
+  .dots{
+    position:absolute;
+    bottom:clamp(14px,3vh,28px);
+    left:50%;
+    transform:translateX(-50%);
+    z-index:3;                
+    display:flex;
+    gap:10px;
   }
-  .dot{ 
-    width:12px; 
-    height:12px; 
-    padding:0; 
-    border-radius:50%; 
-    background: solid; 
-    display:inline-block; 
+  .dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background: rgba(255,255,255,0.35);  
+    border: none;                       
+    box-shadow: 0 0 8px rgba(0,0,0,0.25); 
+    cursor:pointer;
+    transition: transform .15s ease, background .15s ease, opacity .15s ease;
+    opacity: 0.9;
   }
   .dot.is-active{ 
     transform: scale(1.2); 

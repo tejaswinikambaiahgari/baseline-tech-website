@@ -40,7 +40,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center">
               <Image
-                src="/flowmersion-logo.png"
+                src="/flowmersion_logo.png"
                 alt="Flowmersion"
                 width={1000}
                 height={200}

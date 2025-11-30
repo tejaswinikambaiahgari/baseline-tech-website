@@ -30,7 +30,7 @@ const faqData = [
 
 export default function AboutUs() {
     return (
-        <div className="relative min-h-screen py-16 px-4 bg-gradient-to-b from-[#071013] via-[#172A31] to-[#071013] overflow-hidden">
+        <div className="relative min-h-screen pt-32 md:pt-40 pb-16 px-4 bg-gradient-to-b from-[#071013] via-[#172A31] to-[#071013] overflow-hidden">
             {/* Circle 1 - Top Left/Center */}
             <div
                 className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full opacity-50 pointer-events-none"

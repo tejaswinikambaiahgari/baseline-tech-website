@@ -96,7 +96,7 @@ export default function Page() {
           <p className="hero-sub">
             Flowmersion captures how you move, turning motion into insight and insight into flow.
           </p>
-          <a href="#join" className="button-59 banner-cta hero-cta">Join Now</a>
+          <a href="/community" className="button-59 banner-cta hero-cta">Join Now</a>
         </div>
       </section>
 
@@ -151,7 +151,7 @@ export default function Page() {
         >
           <h2 className="banner-text">Every Turn Tells A Story...</h2>
           <p className="banner-caption"> Let's capture yours! </p>
-          <a className="button-59 banner-cta" href="#join">Join Us</a>
+          <a className="button-59 banner-cta" href="/community">Join Us</a>
         </div>
       </section>
     </>
