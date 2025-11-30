@@ -123,7 +123,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ picture, quote, name,
 
 export default function ProductPage() {
     return (
-        <div className="w-full overflow-x-hidden">
+        <div className="w-full overflow-x-hidden bg-black">
             {/* Panel 1 */}
             <div className="flex px-6 md:px-12 lg:px-20 py-12 md:py-20">
                 <div className="flex flex-col lg:flex-row gap-8 md:gap-12 w-full items-center lg:items-start max-w-7xl mx-auto">
@@ -139,9 +139,9 @@ export default function ProductPage() {
 
 
                     {/* Text on Right*/}
-                    <div className="lg:flex-1 text-white flex flex-col space-y-6 md:space-y-8 lg:pr-8 text-center lg:text-left">
+                    <div className="lg:flex-1 text-white flex flex-col space-y-4 md:space-y-6 lg:pr-8 text-center lg:text-left">
                         <h1 className="text-white text-[40px] md:text-[56px] leading-[100%] font-bold">
-                            SnowIn
+                            SmartRide
                         </h1>
                         <p className="text-base md:text-lg leading-[1.7]">
                             With the SnoWin device, snowboarding has never been more accessible.
@@ -188,15 +188,15 @@ export default function ProductPage() {
 
 
             {/* Panel 3  */}
-            <div className="px-6 md:px-12 lg:px-20 py-20 md:py-32 relative">
+            <div className="px-6 md:px-12 lg:px-20 py-20 md:py-32 relative bg-black">
                 <div className="max-w-7xl mx-auto relative">
-                    {/* ountain Background */}
-                    <div className="absolute left-0 top-[-100px] md:top-[-150px] lg:top-[-200px] z-0 h-[400px] w-[600px] md:h-[700px] md:w-[1000px] lg:h-[800px] lg:w-[1200px] pointer-events-none opacity-40">
+                    {/* Mountain Background */}
+                    <div className="absolute left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 top-[-100px] md:top-[-150px] lg:top-[-200px] z-0 h-[400px] w-[600px] md:h-[700px] md:w-[1000px] lg:h-[800px] lg:w-[1200px] pointer-events-none opacity-40">
                         <Image
                             src="/mountain.png"
                             alt="mountain"
                             fill
-                            className="object-contain object-left"
+                            className="object-contain object-center lg:object-left"
                         />
                     </div>
 
@@ -206,13 +206,8 @@ export default function ProductPage() {
                     <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0">
 
 
-                        {/* Phone */}
-                        <div className="lg:col-span-5 flex flex-col items-center lg:items-start">
-                            <h2 className="bg-gradient-to-b from-[#65B4D0] to-[#959595] text-transparent bg-clip-text font-bold text-4xl md:text-5xl lg:text-[40px] mb-8 lg:mb-12 text-center lg:text-left font-manrope leading-tight lg:ml-12 xl:ml-16">
-                                Improve<br/> With Every<br/> Run
-                            </h2>
-
-
+                        {/* Phone - Now on the left for desktop */}
+                        <div className="lg:col-span-5 flex flex-col items-center lg:items-start lg:order-1 order-1">
                             {/* Phone */}
                             <div
                                 className="relative h-[500px] w-[250px] md:h-[600px] md:w-[300px] lg:h-[640px] lg:w-[330px]"
@@ -225,19 +220,22 @@ export default function ProductPage() {
                         </div>
 
 
-                        {/* Cards */}
-                        <div className="lg:col-span-7 flex flex-col justify-center gap-8 lg:gap-12 lg:-ml-32 xl:-ml-40 lg:mt-20 xl:mt-24 relative z-10">
+                        {/* Card */}
+                        <div className="lg:col-span-7 flex flex-col justify-center gap-0 lg:gap-12 lg:order-2 lg:-ml-60 xl:mt-24 relative z-10 order-2">
+                            <h2 className="bg-gradient-to-b from-[#65B4D0] to-[#959595] text-transparent bg-clip-text font-bold text-4xl md:text-5xl lg:text-[40px] mb-8 lg:mb-12 text-center lg:text-right font-manrope leading-tight lg:mr-12 xl:mr-20">
+                                Improve<br/> With Every<br/> Run
+                            </h2>
 
 
                             {/* Analytics Card 1 */}
-                            <div className="flex flex-col md:flex-row items-start gap-4 relative">
+                            <div className="flex flex-col md:flex-row items-start gap-0relative">
                                 {/* Connector Line*/}
                                 <div className="hidden md:block relative h-[80px] w-[120px] lg:w-[150px] xl:w-[200px] flex-shrink-0">
-                                    <Image src="/line2.png" alt="connector line" fill className="object-contain"/>
+                                    <Image src="/straightline.png" alt="connector line" fill className="object-contain"/>
                                 </div>
 
 
-                                <div className="flex-1">
+                                <div className="flex-1 min-w-0">
                                     {/* Label */}
                                     <div className="bg-[#606060] text-white rounded-[20px] px-3 py-2 w-fit mb-4">
                                         <p className="text-[10px] md:text-xs font-medium whitespace-nowrap">LIVE TRACKING ANALYTICS</p>
@@ -249,8 +247,8 @@ export default function ProductPage() {
                                         <div className="relative h-[50px] w-[50px] md:h-[60px] md:w-[60px] flex-shrink-0">
                                             <Image src="/AnalyticsIcon.png" alt="analytics icon" fill className="object-contain"/>
                                         </div>
-                                        <p className="text-white text-sm md:text-base">
-                                            Lorem ipsum dolor sit amet consectetur. Condimentum aliquam nunc vestibulum proin aliquam tellus habitasse suspendisse gravida. Metus phasellus ridiculus nisi velit libero vel id.
+                                        <p className="text-white text-sm md:text-base break-words">
+                                            With community leaderboards, shared ride challenges, and smart coaching tips powered by your data, the app keeps you connected long after you unstrap your board.
                                         </p>
                                     </div>
                                 </div>
@@ -258,14 +256,14 @@ export default function ProductPage() {
 
 
                             {/* Analytics Card 2 */}
-                            <div className="flex flex-col md:flex-row items-start gap-4 relative md:translate-y-8">
+                            <div className="flex flex-col md:flex-row items-start gap-4 relative md:translate-y-1">
                                 {/* Connector Line */}
                                 <div className="hidden md:block relative h-[80px] w-[120px] lg:w-[150px] xl:w-[200px] flex-shrink-0">
-                                    <Image src="/snowboardicon.png" alt="connector line" fill className="object-contain"/>
+                                    <Image src="/straightline.png" alt="connector line" fill className="object-contain"/>
                                 </div>
 
 
-                                <div className="flex-1">
+                                <div className="flex-1 min-w-0">
                                     {/* Label */}
                                     <div className="bg-[#606060] text-white rounded-[20px] px-3 py-2 w-fit mb-4">
                                         <p className="text-[10px] md:text-xs font-medium whitespace-nowrap">LIVE TRACKING ANALYTICS</p>
@@ -277,8 +275,8 @@ export default function ProductPage() {
                                         <div className="relative h-[50px] w-[50px] md:h-[60px] md:w-[60px] flex-shrink-0">
                                             <Image src="/snowboardicon.png" alt="analytics icon" fill className="object-contain"/>
                                         </div>
-                                        <p className="text-white text-sm md:text-base">
-                                            Lorem ipsum dolor sit amet consectetur. Condimentum aliquam nunc vestibulum proin aliquam tellus habitasse suspendisse gravida. Metus phasellus ridiculus nisi velit libero vel id.
+                                        <p className="text-white text-sm md:text-base break-words">
+                                            Customize your dashboard, track your growth, and rediscover every carve. Your data, your ride, your story — all in one place.
                                         </p>
                                     </div>
                                 </div>
@@ -286,6 +284,8 @@ export default function ProductPage() {
 
 
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -328,7 +328,7 @@ export default function ProductPage() {
                 {/* Testimonial Cards */}
                 <div className="flex flex-col lg:flex-row gap-8 items-center justify-center max-w-7xl mx-auto w-full">
                     <TestimonialCard
-                        picture="/BradleyTestimonial.png"
+                        picture="/HaleyTestimonialsPanel.png"
                         quote="Snowin has changed how I ride. Can't imagine boarding without it now!"
                         name="HALEY"
                         position="MEMBER"
@@ -336,7 +336,7 @@ export default function ProductPage() {
 
 
                     <TestimonialCard
-                        picture="/ChrisTestimmonial.png"
+                        picture="/ChrisTestimonalsPanel.png"
                         quote="Seeing each run mapped out like Strava makes it so easy to spot where I can improve."
                         name="CHRIS"
                         position="MEMBER"
@@ -344,7 +344,7 @@ export default function ProductPage() {
 
 
                     <TestimonialCard
-                        picture="HaleyTestimonialsPanel.png"
+                        picture="/BradleyTestimonal.png"
                         quote="It's made reviewing runs faster and more precise, and my riders stay motivated chasing local leaderboard rankings."
                         name="BRADLEY"
                         position="MEMBER"
