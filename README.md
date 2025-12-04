@@ -478,21 +478,26 @@ npm run start
 
 ### Deployment Options
 
-#### Option 1: Vercel (Recommended)
+### Option 1: Railway (Recommended)
+Cost: 30-day free trial, then $20/month minimum for production sites
+Pros: Handles both frontend and backend together seamlessly, no splitting needed, scales well for business sites
+Best for: Professional deployment with expected traffic growth
+
+#### Option 2: Vercel (Not backend compatible, will need DigitalOcean -- look at slack message sent out)
 
 1. Push code to GitHub  
 2. Connect GitHub repo to Vercel  
 3. Vercel auto-deploys on every push  
 4. Custom domain setup available
 
-#### Option 2: Netlify
+#### Option 3: Netlify
 
 1. Push code to GitHub  
 2. Connect repo to Netlify  
 3. Build command: `npm run build`  
 4. Publish directory: `.next`
 
-#### Option 3: Traditional Hosting
+#### Option 4: Traditional Hosting
 
 1. Run `npm run build`  
 2. Upload `.next` folder to server  
@@ -686,10 +691,10 @@ npm update          # Update dependencies
 
 ## Version History
 
-**v1.0.0** - November 2025  
+**v1.0.0** - December 2025  
 - Initial release  
 - Responsive design complete  
 - All sections implemented  
-- Production-ready
+- Production-ready (needs to be deployed)
 
 ---
