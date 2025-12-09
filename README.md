@@ -504,6 +504,180 @@ Best for: Professional deployment with expected traffic growth
 3. Ensure Node.js is installed on server  
 4. Run `npm run start`
 
+### Best Option: Vercel + DigitalOcean Split Deployment (Idea We Discussed)
+This option splits the application into two deployments: frontend on Vercel and backend on DigitalOcean. This approach is necessary because Vercel's serverless architecture is not compatible with our Express.js backend without significant refactoring.
+
+Prerequisites:
+
+1. GitHub repository with the code
+2. Vercel account (sign up at vercel.com)
+3. DigitalOcean account (sign up at digitalocean.com)
+4. Domain access for flowmersion.com
+
+### Part A: Frontend Deployment (Vercel)
+Step 1: Prepare Your Repository
+
+Step 2: Connect to Vercel
+
+1. Log in to Vercel
+2. Click "Add New Project"
+3. Import your GitHub repository
+4. Select the repository containing your frontend code
+
+Step 3: Configure Build Settings
+
+1. Root Directory: Set to frontend (if your Next.js app is in a subdirectory)
+2. Framework Preset: Next.js (should auto-detect)
+3. Build Command: npm run build (auto-detected)
+4. Output Directory: .next (auto-detected)
+5. Install Command: npm install (auto-detected)
+
+Step 4: Set Environment Variables
+
+In the Vercel dashboard, add the following environment variable:
+
+ ``` NEXT_PUBLIC_API_URL=https://your-backend-url.com ```
+
+(You'll update this URL after deploying the backend to DigitalOcean)
+
+Step 5: Deploy
+
+1. Click "Deploy"
+2. Vercel will build and deploy your frontend
+3. You'll receive a temporary URL like your-project.vercel.app
+4. Test the deployment to ensure the frontend loads correctly
+
+Step 6: Custom Domain Setup
+
+1. In Vercel dashboard, go to your project settings
+2. Navigate to "Domains"
+3. Add flowmersion.com and www.flowmersion.com
+4. Vercel will provide DNS configuration instructions
+5. Log into your domain registrar (where flowmersion.com was purchased)
+6. Update DNS records as instructed by Vercel:
+
+Add an A record or CNAME pointing to Vercel's servers
+
+
+Wait 24-48 hours for DNS propagation
+
+Vercel will automatically provision an SSL certificate
+
+***Part B: Backend Deployment (DigitalOcean)***
+
+Step 1: Create a Droplet
+
+1. Log in to DigitalOcean
+2. Click "Create" → "Droplets"
+3. Choose an image: Ubuntu 22.04 LTS (recommended)
+4. Choose a plan: Basic ($4-6/month is sufficient for starting out)
+5. Choose a datacenter region close to your target audience
+6. Authentication: Add your SSH key or create a root password
+7. Click "Create Droplet"
+
+Step 2: Connect to Your Droplet
+
+```ssh root@your_droplet_ip```
+
+Step 3: Install Node.js and npm
+
+```
+# Update package list
+apt update && apt upgrade -y
+
+# Install Node.js (v20.x recommended)
+curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+apt install -y nodejs
+
+# Verify installation
+node -v
+npm -v
+```
+Step 4: Install PM2 (Process Manager)
+
+```npm install -g pm2```
+
+Step 5: Set Up Your Backend Application
+
+```
+# Create application directory
+mkdir -p /var/www/snowin-backend
+cd /var/www/snowin-backend
+
+# Clone your repository (or use git)
+git clone https://github.com/your-repo.git .
+
+# Navigate to backend directory
+cd backend
+
+# Install dependencies
+npm install
+```
+
+
+Step 6: Configure Environment Variables
+
+```
+# Create .env file
+nano .env
+```
+
+Add your environment variables:
+```
+SUPABASE_URL=your_supabase_url
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_key
+SUPABASE_KEY=your_supabase_key
+WEBHOOK_SECRET=your_webhook_secret
+NODE_ENV=production
+PORT=8080
+```
+
+Save and exit (Ctrl+X, then Y, then Enter)
+Step 7: Update CORS Configuration
+Edit your server.js to allow requests from your Vercel frontend:
+
+```
+const corsOption = {
+    origin: [
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "https://your-project.vercel.app",
+        "https://flowmersion.com",
+        "https://www.flowmersion.com"
+    ],
+    credentials: true
+};
+app.use(cors(corsOption));
+```
+
+Step 8: Start the Backend with PM2
+
+```
+# Start the application
+pm2 start server.js --name snowin-backend
+
+# Save PM2 configuration
+pm2 save
+
+# Set PM2 to start on system boot
+pm2 startup
+# Follow the command output instructions
+```
+
+Step 2: Redeploy Frontend
+
+1. In Vercel dashboard, go to "Deployments"
+2. Click the three dots on the latest deployment
+3. Select "Redeploy"
+4. This will rebuild with the new environment variable
+
+Step 3: Test the Integration
+
+1. Visit your Vercel frontend URL or flowmersion.com
+2. Try submitting the waitlist form
+3. Check that data is properly saved to Supabase
+4. Verify MailerLite integration is working
+
 ### Environment Variables
 
 If you need API keys or secrets:
@@ -633,6 +807,18 @@ npm update
 
 # Update specific package
 npm install react@latest
+```
+
+### Updating a specific package:
+```
+# Update a specific package to latest version
+npm install react@latest
+
+# Update to a specific version
+npm install next@15.5.4
+
+# Update dev dependencies
+npm install --save-dev typescript@latest
 ```
 
 ### Adding New Sections
