@@ -94,7 +94,7 @@ export default function Page() {
             The motion tech that<br />levels up your ride.
           </h1>
           <p className="hero-sub">
-            Flowmersion captures how you move, turning motion into insight and insight into flow.
+            BaselineTech captures how you move, turning motion into insight and insight into flow.
           </p>
           <a href="/community" className="button-59 banner-cta hero-cta">Join Now</a>
         </div>
