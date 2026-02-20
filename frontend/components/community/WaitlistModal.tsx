@@ -73,7 +73,7 @@ export default function WaitlistModal({ trigger }: WaitlistModalProps) {
                                                 "opacity-0 -translate-y-5" }`}>
                                 <h1 className="text-3xl md:text-7xl font-bold mb-3 md:mb-6">Join The Waitlist</h1>
                                 <p className="md:mb-8 text-md md:text-2xl font-bold max-w-lg">
-                                    Be the first to learn more about Flowmersion’s products and
+                                    Be the first to learn more about BaselineTech’s products and
                                     gain access to exclusive deals and info.
                                 </p>
                             </div>
