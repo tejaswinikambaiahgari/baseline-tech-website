@@ -19,7 +19,7 @@ export default function WaitlistSection() {
                 <h1 className="text-7xl font-bold mb-6">Join The Waitlist</h1>
 
                 <p className="mb-8 text-2xl font-bold max-w-lg">
-                    Be the first to learn more about Flowmersion’s products and gain access to
+                    Be the first to learn more about BaselineTech’s products and gain access to
                     exclusive deals and info.
                 </p>
 
