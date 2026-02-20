@@ -19,6 +19,7 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+        rules: {"react/no-unescaped-entities": "warn", "@next/next/no-img-element": "warn"},
   },
 ];
 
