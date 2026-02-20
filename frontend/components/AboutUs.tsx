@@ -62,7 +62,7 @@ export default function AboutUs() {
                                 </span>
                             </h2>
                             <p className="text-white font-['Manrope'] text-[24px] font-medium leading-[100%]">
-                                Why Flowmersion? Because we design with one rule: the mountain comes
+                                Why BaselineTech? Because we design with one rule: the mountain comes
                                 first.
                             </p>
                             <p className="text-white font-['Manrope'] text-[24px] font-medium leading-[100%]">
