@@ -2,14 +2,7 @@ import Image from "next/image";
 
 export default function SimulatorPage() {
   return (
-    <div className="w-full bg-black min-h-screen" style={{ margin: 0, padding: 0 }}>
-      <style jsx global>{`
-        html, body {
-          background-color: black !important;
-          margin: 0 !important;
-          padding: 0 !important;
-        }
-      `}</style>
+    <div className="w-full bg-black min-h-screen">
 
       {/* Hero Panel */}
       <div className="w-full px-6 md:px-12 lg:px-20 py-12 md:py-20 bg-black">
@@ -33,26 +26,23 @@ export default function SimulatorPage() {
                 <p className="text-[#40E0D0] uppercase tracking-widest text-sm font-semibold mb-3">
                   Meet our Simulator
                 </p>
-                <h1 className="text-white text-[40px] md:text-[56px] leading-[100%] font-bold" style={{ marginBottom: '20px' }}>
+                <h1 className="text-white text-[40px] md:text-[56px] leading-[100%] font-bold mb-5">
                   Indoor Simulator
                 </h1>
-                <h2 className="text-white text-[24px] md:text-[32px] font-bold leading-[1.3]" style={{ marginBottom: '20px' }}>
+                <h2 className="text-white text-[24px] md:text-[32px] font-bold leading-[1.3] mb-5">
                   Make snowboarding{" "}
                   <br />safe, trainable, and
                   <br />accessible all year round.
                 </h2>
-                <p className="text-base md:text-lg leading-[1.7] text-gray-300" style={{ marginBottom: '28px' }}>
+                <p className="text-base md:text-lg leading-[1.7] text-gray-300 mb-7">
                   Train smarter before you hit the snow.
                 </p>
-                <div style={{ marginTop: '4px' }}>
-                  <button
-                    className="w-auto px-8 md:px-9 py-3 md:py-[14px] rounded-[8px] bg-transparent border-2 border-[#40E0D0] text-[#40E0D0] font-semibold inline-flex items-center justify-center gap-3 transition-all duration-300 ease-in-out hover:bg-[rgba(64,224,208,0.2)] hover:shadow-[0_0_20px_rgba(64,224,208,0.4)]"
-                    style={{ backdropFilter: 'blur(10px)' }}
-                  >
-                    Learn More
-                    <span className="text-xl">&rarr;</span>
-                  </button>
-                </div>
+                <button
+                  className="w-auto px-8 md:px-9 py-3 md:py-[14px] rounded-[8px] bg-transparent border-2 border-[#40E0D0] text-[#40E0D0] font-semibold inline-flex items-center justify-center gap-3 transition-all duration-300 ease-in-out hover:bg-[rgba(64,224,208,0.2)] hover:shadow-[0_0_20px_rgba(64,224,208,0.4)]"
+                >
+                  Learn More
+                  <span className="text-xl">&rarr;</span>
+                </button>
               </div>
             </div>
           </div>
@@ -69,7 +59,7 @@ export default function SimulatorPage() {
                 Train.<br />Improve.<br />Conquer.
               </h2>
               <p className="text-gray-300 text-base md:text-lg leading-[1.7] mt-4">
-                Our indoor simulator lets you practice every technique, carve every turn, and build muscle memory — all without leaving the building.
+                Our indoor simulator lets you practice every technique, carve every turn, and build muscle memory all without leaving the building.
               </p>
             </div>
             {/* Image */}
