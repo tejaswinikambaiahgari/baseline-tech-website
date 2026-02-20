@@ -11,7 +11,7 @@ import cors from "cors";
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY);
 const app = express();
 const corsOption = {
-    origin:["http://localhost:3000"],
+        origin:["http://localhost:3000", "https://baselinetech.net", "https://www.baselinetech.net"],
 }; app.use(cors(corsOption));
 app.use(express.json());
 
