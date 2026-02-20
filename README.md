@@ -1,6 +1,6 @@
-# FlowMersion Website Documentation
+# BaselineTech Website Documentation
 
-**Project:** FlowMersion Winter Sports Application Marketing Site  
+**Project:** BaselineTech Winter Sports Application Marketing Site  
 **Client:** Baseline Tech  
 **Tech Stack:** React, TypeScript, Tailwind CSS, Next.js  
 **Last Updated:** November 2025
@@ -512,7 +512,7 @@ Prerequisites:
 1. GitHub repository with the code
 2. Vercel account (sign up at vercel.com)
 3. DigitalOcean account (sign up at digitalocean.com)
-4. Domain access for flowmersion.com
+4. Domain access for BaselineTech.com
 
 ### Part A: Frontend Deployment (Vercel)
 Step 1: Prepare Your Repository
@@ -551,9 +551,9 @@ Step 6: Custom Domain Setup
 
 1. In Vercel dashboard, go to your project settings
 2. Navigate to "Domains"
-3. Add flowmersion.com and www.flowmersion.com
+3. Add BaselineTech.com and www.BaselineTech.com
 4. Vercel will provide DNS configuration instructions
-5. Log into your domain registrar (where flowmersion.com was purchased)
+5. Log into your domain registrar (where BaselineTech.com was purchased)
 6. Update DNS records as instructed by Vercel:
 
 Add an A record or CNAME pointing to Vercel's servers
@@ -642,8 +642,8 @@ const corsOption = {
         "http://localhost:5173",
         "http://localhost:3000",
         "https://your-project.vercel.app",
-        "https://flowmersion.com",
-        "https://www.flowmersion.com"
+        "https://BaselineTech.com",
+        "https://www.BaselineTech.com"
     ],
     credentials: true
 };
@@ -673,7 +673,7 @@ Step 2: Redeploy Frontend
 
 Step 3: Test the Integration
 
-1. Visit your Vercel frontend URL or flowmersion.com
+1. Visit your Vercel frontend URL or BaselineTech.com
 2. Try submitting the waitlist form
 3. Check that data is properly saved to Supabase
 4. Verify MailerLite integration is working
