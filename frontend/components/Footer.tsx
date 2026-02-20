@@ -83,12 +83,12 @@ export default function Footer() {
           <div>
             <h3 className="mb-4 text-lg font-medium text-white">Contact</h3>
             <div className="space-y-1">
-              <p className="text-white">Naman Gupta, Co-Founder</p>
+              <p className="text-white">Tejaswini Kambaiahgari, Co-Founder</p>
               <a
-                href="mailto:naman.eidar@gmail.com"
+                href="mailto:tejaswinikambaiahgari17@gmail.com"
                 className="text-white hover:text-white/80 visited:text-white active:text-white break-all"
               >
-                naman.eidar@gmail.com
+                tejaswinikambaiahgari17@gmail.com
               </a>
             </div>
           </div>
