@@ -4,13 +4,39 @@ export default function SimulatorPage() {
   return (
     <div className="w-full bg-black min-h-screen">
 
-      {/* Hero Panel */}
-      <div className="w-full px-6 md:px-12 lg:px-20 py-12 md:py-20 bg-black">
+      {/* Hero Panel — text first on mobile, side-by-side on desktop */}
+      <div className="w-full px-6 md:px-12 lg:px-20 pt-16 pb-12 md:pt-20 md:pb-20 bg-black">
         <div className="w-full max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-8 md:gap-12 items-center justify-center">
-            {/* Image */}
-            <div className="w-full lg:w-1/2 flex justify-center">
-              <div className="relative w-full h-[300px] md:h-[400px] max-w-[600px]">
+
+            {/* Text — order-1 on mobile so it appears first */}
+            <div className="w-full lg:w-1/2 text-white flex flex-col items-center lg:items-start order-1 lg:order-2">
+              <div className="w-full text-center lg:text-left">
+                <p className="text-[#40E0D0] uppercase tracking-widest text-sm font-semibold mb-3">
+                  Meet our Simulator
+                </p>
+                <h1 className="text-white text-[36px] md:text-[56px] leading-[1.05] font-bold mb-4">
+                  Indoor Simulator
+                </h1>
+                <h2 className="text-white text-[20px] md:text-[28px] font-bold leading-[1.3] mb-4">
+                  Make snowboarding safe, trainable,
+                  <br />and accessible all year round.
+                </h2>
+                <p className="text-base md:text-lg leading-[1.7] text-gray-300 mb-6">
+                  Train smarter before you hit the snow.
+                </p>
+                <button
+                  className="w-auto px-8 py-3 rounded-[8px] bg-transparent border-2 border-[#40E0D0] text-[#40E0D0] font-semibold inline-flex items-center justify-center gap-3 transition-all duration-300 ease-in-out hover:bg-[rgba(64,224,208,0.2)] hover:shadow-[0_0_20px_rgba(64,224,208,0.4)]"
+                >
+                  Learn More
+                  <span className="text-xl">&rarr;</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Image — order-2 on mobile so it appears below text */}
+            <div className="w-full lg:w-1/2 flex justify-center order-2 lg:order-1">
+              <div className="relative w-full h-[220px] md:h-[380px] max-w-[560px]">
                 <Image
                   src="/drone.png"
                   alt="Indoor Simulator"
@@ -20,31 +46,7 @@ export default function SimulatorPage() {
                 />
               </div>
             </div>
-            {/* Text */}
-            <div className="w-full lg:w-1/2 text-white flex flex-col items-center lg:items-start">
-              <div className="w-full text-center lg:text-left">
-                <p className="text-[#40E0D0] uppercase tracking-widest text-sm font-semibold mb-3">
-                  Meet our Simulator
-                </p>
-                <h1 className="text-white text-[40px] md:text-[56px] leading-[100%] font-bold mb-5">
-                  Indoor Simulator
-                </h1>
-                <h2 className="text-white text-[24px] md:text-[32px] font-bold leading-[1.3] mb-5">
-                  Make snowboarding{" "}
-                  <br />safe, trainable, and
-                  <br />accessible all year round.
-                </h2>
-                <p className="text-base md:text-lg leading-[1.7] text-gray-300 mb-7">
-                  Train smarter before you hit the snow.
-                </p>
-                <button
-                  className="w-auto px-8 md:px-9 py-3 md:py-[14px] rounded-[8px] bg-transparent border-2 border-[#40E0D0] text-[#40E0D0] font-semibold inline-flex items-center justify-center gap-3 transition-all duration-300 ease-in-out hover:bg-[rgba(64,224,208,0.2)] hover:shadow-[0_0_20px_rgba(64,224,208,0.4)]"
-                >
-                  Learn More
-                  <span className="text-xl">&rarr;</span>
-                </button>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
@@ -55,7 +57,7 @@ export default function SimulatorPage() {
           <div className="flex flex-col lg:flex-row gap-8 items-center">
             {/* Text */}
             <div className="w-full lg:w-1/2 lg:pl-8 text-center lg:text-left">
-              <h2 className="bg-gradient-to-b from-[#65B4D0] to-[#FFFFFF] inline-block text-transparent bg-clip-text text-[40px] md:text-[56px] mb-8 md:mb-10 font-bold leading-[1.2]">
+              <h2 className="bg-gradient-to-b from-[#65B4D0] to-[#FFFFFF] inline-block text-transparent bg-clip-text text-[40px] md:text-[56px] mb-6 font-bold leading-[1.2]">
                 Train.<br />Improve.<br />Conquer.
               </h2>
               <p className="text-gray-300 text-base md:text-lg leading-[1.7] mt-4">
@@ -64,7 +66,7 @@ export default function SimulatorPage() {
             </div>
             {/* Image */}
             <div className="w-full lg:w-1/2 px-4 md:px-12">
-              <div className="relative w-full h-[300px] md:h-[420px] rounded-[10px] overflow-hidden mx-auto">
+              <div className="relative w-full h-[260px] md:h-[380px] rounded-[10px] overflow-hidden mx-auto">
                 <Image
                   src="/drone.png"
                   alt="Simulator in action"
