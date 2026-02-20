@@ -41,7 +41,7 @@ export default function Footer() {
             <div className="flex items-center">
               <Image
                 src="/flowmersion_logo.png"
-                alt="Flowmersion"
+                alt="BaselineTech"
                 width={1000}
                 height={200}
                 priority
